@@ -1,0 +1,34 @@
+Projekt Ötlet: Több-Ágenses 2D Túlélő Szimulátor (AI Civilizáció)
+1. A Projekt Célja (A Megfogalmazott Probléma)
+
+A projekt célja egy saját fejlesztésű, 2D-s rács-alapú (grid) szimulációs környezet létrehozása, amelyben Mesterséges Intelligencia (Neurális Hálózatok) által vezérelt ügynökök élnek. Ezeknek az "agyaknak" meg kell tanulniuk a túlélés alapszabályait: nyersanyagot gyűjteni, eszközöket készíteni (craftolni), valamint alkalmazkodni a dinamikusan csökkenő belső szükségleteikhez (éhség, életerő, fázás). A projekt bemutatja a mélytanulás (Deep Learning) képességét összetett, összefüggő rendszerek és hierarchikus cselekvések elsajátításában.
+
+2. Adatgyűjtés
+
+Az adatgyűjtés Behavioral Cloning (Viselkedés-másolás) megközelítéssel történik. A fejlesztő (emberi játékos) irányítja a karaktert a szimulált környezetben. A játék másodpercenként rögzíti a környezeti Állapotot (State: 7x7-es látótér, aktuális HP, éhség, inventory) és a kiadott Cselekvést (Action: mozgás, bányászat, craftolás). Az összegyűjtött logok egy nagyméretű, strukturált adatbázist (CSV/JSON) képeznek a gépi tanuláshoz. Későbbi fejlesztési szakaszban az ügynökök önállóan (Reinforcement Learninggel) is generálhatnak adatot.
+
+3. Adatfeldolgozás (2., 4. hét)
+
+A környezetből kinyert naplófájlokat gépi tanulásra alkalmassá kell tenni:
+
+Dimenziók konvertálása / Transzponálása: A környezeti mezők (pl. fa, víz, kő, tűz) azonosítóinak "One-Hot Encoding" ábrázolása vagy Embedding rétegek használata.
+Normalizáció: A belső statisztikák (pl. HP 0-100) és a térbeli adatok leskálázása 0 és 1 közötti értékekre, a hatékony gradiens ereszkedés érdekében.
+Idősoros reprezentáció: Az események (action history) egymás utáni ablakozása (Time-series data) az ügynök "rövid távú memóriájának" előkészítéséhez.
+4. Modellezés és Architektúra (6., 7., 8., 9. hét)
+
+Az ügynökök "agya" egy komplex mesterséges neurális hálózat, amely lefed több labor-témakört:
+
+Konvolúciós réteg (CNN - 7. hét): Feldolgozza a karaktert körülvevő "pixeleket"/rácsokat, mint egy képet, felismerve a térbeli mintázatokat (hol van az erdő, hol van víz).
+Rekurrens réteg (RNN / LSTM - 8. hét): Az időbeli sorozatok feldolgozása. Lehetővé teszi, hogy az ügynök megjegyezze: az előbb elindult vizet keresni, így nem felejti el a feladatát két lépés után.
+Saját költségfüggvény (9. hét): Olyan egyedi veszteségfüggvény (Loss Function) írása, amely bünteti a hálózatot a kritikus hibákért (pl. éhezés) és jutalmazza a fejlett cselekvéseket (pl. fejsze készítése).
+5. Teljesítmény Analízis (5. hét)
+
+Az algoritmusok teljesítményének mérése több dimenzióban történik:
+
+Klasszikus metrikák: Loss görbék, és a "pontosság" (Accuracy) mérése a humán mozdulatok utánzásában (Validation Set-en).
+Szimulációs metrikák: Átlagos túlélési idő (tick-ekben), megszerzett nyersanyagok átlagos mennyisége epizódónként, és a "sikeres craftolások" száma.
+Különböző hálózat-típusok (pl. Sima MLP vs. CNN+RNN memóriás háló) teljesítményének összehasonlító analízise.
+6. Modell Becsomagolás és Applikáció (10-14. hét)
+A betanított modellek (TensorFlow/PyTorch formátumban) izolált, exportálható osztályokként (inference mode) kerülnek becsomagolásra.
+Web App / Grafikus Szimulátor: A végeredmény egy látványos 2D grafikus alkalmazás, amit a felhasználó el tud indítani.
+A Bemutató (14. hét): A bemutatón a közönség valós időben nézheti (akár webes felületen vagy kivetítve), ahogy a nulláról betanított AI ügynökök önállóan élnek, fákat vágnak, tüzet raknak és megpróbálják túlélni a telet a képernyőn.

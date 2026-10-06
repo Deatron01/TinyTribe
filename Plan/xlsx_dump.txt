@@ -1,0 +1,48 @@
+Sheet: Nyersanyagok
+Név,Típus,Honnan szerezhető?,Mire jó? (Funkció)
+Fa (Wood),Nyersanyag,Fák kivágása,"Eszközkészítés, Tűzrakás, Építés"
+Kő (Stone),Nyersanyag,Sziklák bányászata,"Eszközkészítés (fejsze, csákány), Kályha"
+Vasérc (Iron),Nyersanyag,Barlang/Mélyebb bányászat,Fejlett eszközök (Kovács használja)
+Bogyó (Berry),Élelem,Bokrokról szedve,"Gyors, de kevés éhség- és szomjúság csillapítás"
+Búza / Termény,Értékes Élelem,"Földből, aratással",Szakács használja kenyérhez (magas tápérték)
+Víz (Water),Folyadék,"Tó, folyó, esővíz-gyűjtő","Szomjúság csillapítása, Főzéshez alapanyag"
+Gyógynövény,Gyógyászati,Erdőben ritkán nő,Orvos használja gyógyszer/kötés készítéshez
+Bőr / Gyapot,Ruházat,Állatok / Gyapotcserje,Ruhakészítés (hideg ellen)
+
+
+Sheet: Crafting Receptek
+Készített Tárgy,Recept (Alapanyagok),Hol készül?,Hatása / Haszna
+Kőbalta (Axe),1 Fa + 1 Kő,Bárhol,"2x gyorsabb favágás, kevesebb fáradtság"
+Csákány (Pickaxe),1 Fa + 2 Kő,Bárhol,Lehetővé teszi a kő/vasérc bányászatát
+Tábortűz,3 Fa + 1 Kő,Bárhol lerakható,"Melegít (éjszaka/télen véd), Lehet rajta sütni"
+Sült étel / Kenyér,2 Búza + 1 Víz,Tábortűz közelében,"+50 Éhség, +10 Erőnlét (Stamina)"
+Gyógyfőzet,2 Gyógynövény + 1 Víz,Tábortűz közelében,Visszatölti a HP-t és gyógyít
+Téli Ruha,3 Bőr / Gyapot,Kovács/Szabó asztal,Megvédi a karaktert a fagyástól
+Vas Szerszámok,1 Fa + 2 Vasérc,Kályha/Üllő mellett,"3x gyorsabb munka, tartósabb eszközök"
+
+
+Sheet: Szükségletek
+Paraméter,Hogyan csökken?,Hogyan növelhető?,"Mi történik, ha eléri a 0-t?"
+Életerő (HP),"Sebződés, Fagyás, Éhezés","Gyógyszer, Orvosi ellátás",Az ügynök meghal.
+Éhség (Hunger),Folyamatosan csökken az idővel,"Bogyó evése, Sült étel evése",Elkezd gyorsan fogyni az Életerő (HP).
+Szomjúság (Thirst),"Melegben gyorsabban, amúgy lassan","Víz ivása folyóból, Bogyó","Nem tud futni, lassan fogy a HP."
+Fáradtság (Energy),"Munkavégzés (favágás, bányászat)",Alvás (egy helyben állás éjjel),"Nem tud dolgozni/mozogni, elalszik a földön."
+Testhő (Temp),Hideg éghajlat / Éjszaka,"Tábortűz, Ruha viselése",Fagyás: rohamosan csökken a HP.
+
+
+Sheet: Éghajlat
+Állapot,Jellemzők és Hatások az AI-ra
+Nappal (Day),Normál látótávolság (CNN többet lát). Normál energiafogyasztás.
+Éjszaka (Night),Látótávolság lecsökken. A testhő rohamosan csökken tűz nélkül. Szörnyek/Veszélyek (opcionális).
+Eső / Vihar,A látótávolság romlik. A vízkészletek feltöltődnek. A tűzrakás nehezebb.
+Hőhullám,A szomjúság 2x gyorsabban csökken. Gyorsabban fáradnak a munkában.
+
+
+Sheet: Szerepkörök
+Szerepkör,Fő feladat,Különleges Képesség
+Favágó (Lumberjack),"Fa gyűjtése, Tábortüzek fenntartása.",Kevesebb energiát veszít favágás közben.
+Bányász (Miner),Kő és vas bányászása a hegyekben/barlangokban.,Csak ő tud hatékonyan vasércet kibányászni.
+Szakács/Földműves,"Bogyók, víz, búza gyűjtése, magas tápértékű étel készítése.",Az általa készített étel 50%-kal több éhséget tölt vissza.
+Kovács (Blacksmith),Baltát/csákányt készít a favágónak és a bányásznak.,Képes fejlett (vas) eszközöket alkotni.
+Orvos (Doctor),"Gyógynövények keresése, sérült AI-ok gyógyítása.",Látja a többi AI életerő-szintjét (HP-ját).
+Építő (Builder),A falu struktúráinak lerakása.,Csak ő tud épületeket építeni.
