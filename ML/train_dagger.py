@@ -25,7 +25,7 @@ from dataset import Episode, Windows, load_episodes, split_by_seed
 from evaluate import load_model
 from experiment import EXPERIMENTS, ROOT, Experiment, markdown_table
 from model import export_onnx, to_save
-from train_bc import action_weights, add, losses, rates, to_device
+from train_bc import action_weights, add, losses, pair_weights, rates, to_device
 from tribe_env import Actor, TribeEnv
 
 
@@ -114,6 +114,7 @@ def main():
     p.add_argument("--val", type=float, default=0.17)
     p.add_argument("--seed", type=int, default=5000, help="first seed of the villages played; each round uses new ones")
     p.add_argument("--balance", type=float, default=0.5, help="rare actions weigh more in the loss; 0 for none")
+    p.add_argument("--pairs", action="store_true", help="--balance weighs each action with its argument (a pickaxe apart from a cooked fish), not the action alone")
     p.add_argument("--turn", type=float, default=1.0, help="how much more a tick counts on which the advice is to begin something else than the tick before; 1 for no more")
     p.add_argument("--remembers", action="store_true", help="the advising bot keeps its plans whatever the learner does (the old way); "
                                                               "by default it keeps them only while the learner does as advised")
@@ -154,7 +155,9 @@ def main():
         windows = Windows(bot_train + earlier + gathered, args.length, args.blocks, rng)
         held_out = Windows(bot_val, args.length, args.blocks, rng)
         takes_argument = torch.from_numpy(windows.takes_argument).to(device)
-        balance = action_weights(bot_train + earlier + gathered, args.balance, device) if args.balance > 0 else None
+        balance = None
+        if args.balance > 0:
+            balance = (pair_weights if args.pairs else action_weights)(bot_train + earlier + gathered, args.balance, device)
         net.train()
         seen = {}
         for _ in range(args.epochs):

@@ -1771,3 +1771,83 @@ Each village is recorded in `ML/data/runs/20261012-0941-eval-ppo-family-28d/` wi
 | A Child Is Born | 0% | 19% |
 
 Folder: `ML/experiments/20261012-0941-eval-ppo-family-28d/`. Run again with: `ML/evaluate.py --model ML/experiments/20261012-0919-ppo-family/model.pt --name eval-ppo-family-28d --villages 16 --days 28 --temperature 0.5 --note "After learning from outcomes: a year on the same 16 maps, picking at temperature 0.5."`
+
+## 2026-10-12 09:50  dagger-family-pairs  (imitation with correction)
+
+Told by the bot to make the pickaxe, the network walked on 73% of the ticks and crafted on 7%, and never kept at it for the five ticks it takes; so no stone and no fire. In the bots' villages that advice is 240 ticks in 3.7 million. Here the loss weighs every action together with its argument, so the pickaxe, the chest, the fire and the tent each count for themselves and not as one craft_build among the cooked fish.
+
+**Why.** Trained only on villages the bots ran, the network had never seen where its own slips lead. Here it plays, the bot says on every
+tick what it would have done in that villager's place, and those situations are added to the training data.
+**The bot's advice.** It keeps a villager's plan only while the villager does as advised; when the villager does something else the advice starts again from the situation, so it never hangs on a plan the network left and cannot see.
+Rare actions are weighted up in the loss (power 0.75).
+**Setup.** Started from `20261012-0022-dagger-family`. 10 rounds; each plays 24 new villages for up to 2400 ticks
+(10 days), then trains 1 passes over the 40 recorded villages plus everything gathered so far
+(lr 0.0003). In the first rounds the bot's own choice is played part of the time, so the villages last long enough to be worth learning from.
+The gathered data is in `ML/data/datasets/20261012-0950-dagger-family-pairs/`. It also trained on what earlier correction runs gathered: ML/data/datasets/20261012-0022-dagger-family,ML/data/datasets/20261012-0740-dagger-family-cool.
+
+| round | bot plays | days lasted | alive at the end | wiped out | same choice as the bot, while playing | on recorded villages (held out) |
+|---|---|---|---|---|---|---|
+| 1 | 0% | 10 | 4.958 | 0 of 24 | 0.5752 | 0.7498 |
+| 2 | 0% | 10 | 4.792 | 0 of 24 | 0.6361 | 0.7403 |
+| 3 | 0% | 10 | 5.125 | 0 of 24 | 0.6409 | 0.7543 |
+| 4 | 0% | 10 | 4.917 | 0 of 24 | 0.6289 | 0.7289 |
+| 5 | 0% | 10 | 5.333 | 0 of 24 | 0.6751 | 0.7496 |
+| 6 | 0% | 10 | 5.083 | 0 of 24 | 0.6618 | 0.7179 |
+| 7 | 0% | 10 | 5.042 | 0 of 24 | 0.6835 | 0.7649 |
+| 8 | 0% | 10 | 5.083 | 0 of 24 | 0.6833 | 0.7586 |
+| 9 | 0% | 10 | 5.167 | 0 of 24 | 0.6599 | 0.734 |
+| 10 | 0% | 10 | 4.75 | 0 of 24 | 0.6827 | 0.7751 |
+
+"Days lasted" in the last rounds is the network alone. Whether it can run a village for a whole year is the evaluation that follows.
+
+Folder: `ML/experiments/20261012-0950-dagger-family-pairs/`. Run again with: `ML/train_dagger.py --start 20261012-0022-dagger-family --dataset ML/data/datasets/bots-family --extra ML/data/datasets/20261012-0022-dagger-family,ML/data/datasets/20261012-0740-dagger-family-cool --name dagger-family-pairs --rounds 10 --villages 24 --horizon 2400 --bot-share 0 --epochs 1 --seed 17000 --temperature 0.5 --batches 500 --balance 0.75 --pairs --note "Told by the bot to make the pickaxe, the network walked on 73% of the ticks and crafted on 7%, and never kept at it for the five ticks it takes; so no stone and no fire. In the bots' villages that advice is 240 ticks in 3.7 million. Here the loss weighs every action together with its argument, so the pickaxe, the chest, the fire and the tent each count for themselves and not as one craft_build among the cooked fish."`
+
+## 2026-10-12 10:03  eval-family-pairs-28d  (evaluation)
+
+After correction weighing action and argument together: a year on the same 16 maps, picking at temperature 0.5.
+
+**Setup.** The network of `20261012-0950-dagger-family-pairs` played 16 villages (seeds 1001 to 1016, none of them used in training)
+for up to 28 days each, sampling its choices (temperature 0.5), choosing only among what the engine allows. The scripted bots played the same seeds.
+Each village is recorded in `ML/data/runs/20261012-1003-eval-family-pairs-28d/` with its own report. The network played 20,407 villager-ticks a second.
+
+**Averages over the villages:**
+
+|  | villages | days lived | alive at the end | achievements | buildings | weddings | children born | technologies | things crafted | things gathered | crops reaped | villager-days | reward per villager-tick |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| this network | 16 | 18.81 | 0 | 7.312 | 0.0625 | 0 | 0 | 0 | 11.75 | 703.8 | 0 | 89.69 | -0.01633 |
+| scripted bots | 16 | 27.47 | 5.625 | 22.5 | 4.438 | 1.438 | 0.1875 | 0.3125 | 142.9 | 837.5 | 2.062 | 163.7 | 0.002906 |
+
+**Share of villages that reached each achievement:**
+
+| achievement | this network | scripted bots |
+|---|---|---|
+| Wolf Down | 100% | 100% |
+| One Season | 100% | 100% |
+| The Council Changed Its Mind | 100% | 94% |
+| Good Company | 100% | 100% |
+| First Night | 100% | 100% |
+| Toolmakers | 100% | 100% |
+| Everyone Has a Job | 100% | 100% |
+| A Wedding | 0% | 94% |
+| First Catch | 25% | 94% |
+| Somewhere to Put Things | 6% | 94% |
+| A Fire in the Village | 0% | 94% |
+| A Full Year | 0% | 94% |
+| Fish Supper | 0% | 94% |
+| Roast | 0% | 94% |
+| Winter Survived | 0% | 94% |
+| Nobody Lost to Winter | 0% | 88% |
+| Something to Study | 0% | 88% |
+| A Place to Think | 0% | 88% |
+| A Full Larder | 0% | 88% |
+| First Garden | 0% | 88% |
+| A Year Without a Death | 0% | 75% |
+| A Proper Village | 0% | 56% |
+| A Roof | 0% | 56% |
+| A Home of One's Own | 0% | 56% |
+| First Harvest | 0% | 38% |
+| Seeds in the Ground | 0% | 38% |
+| Carpentry | 0% | 31% |
+| A Child Is Born | 0% | 19% |
+
+Folder: `ML/experiments/20261012-1003-eval-family-pairs-28d/`. Run again with: `ML/evaluate.py --model ML/experiments/20261012-0950-dagger-family-pairs/model.pt --name eval-family-pairs-28d --villages 16 --days 28 --temperature 0.5 --note "After correction weighing action and argument together: a year on the same 16 maps, picking at temperature 0.5."`

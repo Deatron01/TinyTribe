@@ -46,6 +46,24 @@ def action_weights(episodes, power: float, device) -> torch.Tensor:
     return torch.tensor(np.clip(weight, 0.25, 8.0), dtype=torch.float32, device=device)
 
 
+def pair_weights(episodes, power: float, device, most: float = 40.0) -> torch.Tensor:
+    """A weight for every action with its argument, [actions, arguments]: the rarer the pair among the recorded choices, the heavier.
+
+    Weighing by the action alone cannot tell making a pickaxe from cooking a fish: both are craft_build, and craft_build is
+    common. But the pickaxe is made once in a village's life, in five ticks, and without it there is no stone and no fire.
+    weight = (1 / (share x number of pairs used)) ^ power, kept between 0.25 and `most`.
+    """
+    layout = episodes[0].layout
+    counts = np.zeros(layout.action_count * layout.arg_count)
+    for e in episodes:
+        chosen = np.asarray(e.action)[np.asarray(e.alive) > 0].astype(np.int64)
+        counts += np.bincount(chosen[:, 0] * layout.arg_count + np.minimum(chosen[:, 1], layout.arg_count - 1), minlength=len(counts))
+    share = counts / max(1.0, counts.sum())
+    used = max(1, int((counts > 0).sum()))
+    weight = np.where(counts > 0, (1.0 / np.maximum(share * used, 1e-9)) ** power, 1.0)
+    return torch.tensor(np.clip(weight, 0.25, most), dtype=torch.float32, device=device).reshape(layout.action_count, layout.arg_count)
+
+
 def losses(net, batch, takes_argument, burn_in: int, weight_scale: float, stats: tuple, action_weight=None, turn: float = 1.0):
     """Returns the loss and the counts behind the accuracies, over the rows that count: the villager was
     alive, the LSTM has warmed up, and what the villager chose was possible when it chose it."""
@@ -71,7 +89,8 @@ def losses(net, batch, takes_argument, burn_in: int, weight_scale: float, stats:
         z = ((batch["return"].float() - mean) / std).clamp(-3, 3)
         weight = torch.exp(weight_scale * z)
     if action_weight is not None:
-        weight = weight * action_weight[action]
+        # One weight per action, or one per action and argument (pair_weights).
+        weight = weight * (action_weight[action] if action_weight.dim() == 1 else action_weight[action, arg.clamp(max=action_weight.shape[1] - 1)])
     if turn != 1.0:
         # The ticks on which a villager begins something else than it was doing (sets off, turns, arrives, starts to
         # work or to build) decide how a day goes, and are few among the ticks on which it simply carries on.

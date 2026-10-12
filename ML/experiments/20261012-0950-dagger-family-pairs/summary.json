@@ -1,0 +1,11 @@
+{
+ "days_lived_last_round": 10.0,
+ "alive_at_end_last_round": 4.75,
+ "agreement_while_playing": 0.68268767698561,
+ "val_both_acc": 0.7750855348028493,
+ "rows_gathered": 10055628,
+ "started_from": "20261012-0022-dagger-family",
+ "experiment": "20261012-0950-dagger-family-pairs",
+ "kind": "imitation with correction",
+ "minutes": 12.7
+}

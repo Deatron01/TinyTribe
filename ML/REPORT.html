@@ -13,7 +13,7 @@ code { background: #e9ecf2; padding: 1px 5px; border-radius: 3px; font-size: 13p
 .note { color: #6a7080; font-size: 13px; }
 </style></head><body><main>
 <h1>TinyTribe: training the villagers</h1>
-<p class='lead'>Every network that was trained and how it did, built from the experiments' own files on 2026-10-12 09:42. 45 experiments.</p>
+<p class='lead'>Every network that was trained and how it did, built from the experiments' own files on 2026-10-12 10:04. 47 experiments.</p>
 <p>A villager sees an 11 x 11 patch of the map and a vector about itself and its village, and chooses one of 21 actions each tick. One network, shared by all villagers, was trained in stages: by imitating recorded play, by being corrected on its own play, and by learning from what the game pays for outcomes. Each stage was judged the same way: the network runs whole villages for a year on maps nothing was trained on, and the scripted bots and blind choice play the same maps.</p>
 <h2>1. The ladder</h2><p>Averages over the evaluation villages. A village is played for up to 28 days (one year).</p>
 <table><tr><th>who plays</th><th>days lived</th><th>alive at the end</th><th>achievements</th><th>buildings</th><th>technologies</th><th>things gathered</th><th>things crafted</th></tr>
@@ -38,10 +38,11 @@ code { background: #e9ecf2; padding: 1px 5px; border-radius: 3px; font-size: 13p
 <tr><td>dagger-family-cool</td><td>18.9</td><td>0</td><td>7.5</td><td>0.188</td><td>0</td><td>757</td><td>10</td></tr>
 <tr><td>dagger-family-turns</td><td>19</td><td>0</td><td>7.56</td><td>0.312</td><td>0</td><td>813</td><td>12.1</td></tr>
 <tr><td>ppo-family</td><td>17.9</td><td>0</td><td>6.38</td><td>0</td><td>0</td><td>450</td><td>5.88</td></tr>
+<tr><td>dagger-family-pairs</td><td>18.8</td><td>0</td><td>7.31</td><td>0.0625</td><td>0</td><td>704</td><td>11.8</td></tr>
 <tr><td>blind choice</td><td>2.92</td><td>0</td><td>2.81</td><td>0</td><td>0</td><td>8.56</td><td>0</td></tr>
 <tr><td>scripted bots</td><td>27.5</td><td>5.62</td><td>22.5</td><td>4.44</td><td>0.312</td><td>838</td><td>143</td></tr>
 </table>
-<div class='card'><svg xmlns="http://www.w3.org/2000/svg" width="520" height="640" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+<div class='card'><svg xmlns="http://www.w3.org/2000/svg" width="520" height="666" font-family="Segoe UI, Arial, sans-serif" font-size="12">
 <text x="0" y="16" font-size="14" font-weight="600">Days a village lasted (of 28)</text>
 <text x="222" y="44" text-anchor="end">bc-bots</text>
 <rect x="230" y="32" width="38.1" height="18" fill="#2f6fdf" rx="2"/>
@@ -106,14 +107,17 @@ code { background: #e9ecf2; padding: 1px 5px; border-radius: 3px; font-size: 13p
 <text x="222" y="564" text-anchor="end">ppo-family</text>
 <rect x="230" y="552" width="149.6" height="18" fill="#2f6fdf" rx="2"/>
 <text x="385.6" y="564">17.9</text>
-<text x="222" y="590" text-anchor="end">blind choice</text>
-<rect x="230" y="578" width="24.4" height="18" fill="#8a8f98" rx="2"/>
-<text x="260.4" y="590">2.92</text>
-<text x="222" y="616" text-anchor="end">scripted bots</text>
-<rect x="230" y="604" width="230.0" height="18" fill="#2e9d57" rx="2"/>
-<text x="466.0" y="616">27.5</text>
+<text x="222" y="590" text-anchor="end">dagger-family-pairs</text>
+<rect x="230" y="578" width="157.5" height="18" fill="#2f6fdf" rx="2"/>
+<text x="393.5" y="590">18.8</text>
+<text x="222" y="616" text-anchor="end">blind choice</text>
+<rect x="230" y="604" width="24.4" height="18" fill="#8a8f98" rx="2"/>
+<text x="260.4" y="616">2.92</text>
+<text x="222" y="642" text-anchor="end">scripted bots</text>
+<rect x="230" y="630" width="230.0" height="18" fill="#2e9d57" rx="2"/>
+<text x="466.0" y="642">27.5</text>
 </svg></div>
-<div class='card'><svg xmlns="http://www.w3.org/2000/svg" width="520" height="640" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+<div class='card'><svg xmlns="http://www.w3.org/2000/svg" width="520" height="666" font-family="Segoe UI, Arial, sans-serif" font-size="12">
 <text x="0" y="16" font-size="14" font-weight="600">Achievements reached per village (of 37)</text>
 <text x="222" y="44" text-anchor="end">bc-bots</text>
 <rect x="230" y="32" width="39.6" height="18" fill="#2f6fdf" rx="2"/>
@@ -178,44 +182,47 @@ code { background: #e9ecf2; padding: 1px 5px; border-radius: 3px; font-size: 13p
 <text x="222" y="564" text-anchor="end">ppo-family</text>
 <rect x="230" y="552" width="65.2" height="18" fill="#2f6fdf" rx="2"/>
 <text x="301.2" y="564">6.38</text>
-<text x="222" y="590" text-anchor="end">blind choice</text>
-<rect x="230" y="578" width="28.8" height="18" fill="#8a8f98" rx="2"/>
-<text x="264.8" y="590">2.81</text>
-<text x="222" y="616" text-anchor="end">scripted bots</text>
-<rect x="230" y="604" width="230.0" height="18" fill="#2e9d57" rx="2"/>
-<text x="466.0" y="616">22.5</text>
+<text x="222" y="590" text-anchor="end">dagger-family-pairs</text>
+<rect x="230" y="578" width="74.8" height="18" fill="#2f6fdf" rx="2"/>
+<text x="310.8" y="590">7.31</text>
+<text x="222" y="616" text-anchor="end">blind choice</text>
+<rect x="230" y="604" width="28.8" height="18" fill="#8a8f98" rx="2"/>
+<text x="264.8" y="616">2.81</text>
+<text x="222" y="642" text-anchor="end">scripted bots</text>
+<rect x="230" y="630" width="230.0" height="18" fill="#2e9d57" rx="2"/>
+<text x="466.0" y="642">22.5</text>
 </svg></div>
 <h2>2. What they achieved</h2><p>Share of villages that reached each achievement (the list is the workbook's <code>Sim Achievements</code>).</p>
-<div class='card'><table><tr><th>achievement</th><th>bc-bots</th><th>bc-bots-compass</th><th>bc-balanced</th><th>dagger-situational</th><th>ppo-from-dagger</th><th>dagger-situational-2</th><th>dagger-years</th><th>ppo-outcomes</th><th>ppo-from-nothing</th><th>dagger-years</th><th>bc-reads-items-corrected</th><th>dagger-compass</th><th>dagger-sees-now</th><th>dagger-family</th><th>dagger-family</th><th>dagger-family</th><th>dagger-family-two-years</th><th>dagger-family-two-years</th><th>dagger-family-cool</th><th>dagger-family-turns</th><th>ppo-family</th><th>blind choice</th><th>scripted bots</th></tr>
-<tr><td>Wolf Down</td><td>0%</td><td>12%</td><td>25%</td><td>100%</td><td>12%</td><td>100%</td><td>94%</td><td>100%</td><td>12%</td><td>94%</td><td>100%</td><td>94%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>94%</td><td>0%</td><td>100%</td></tr>
-<tr><td>Good Company</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>0%</td><td>100%</td></tr>
-<tr><td>The Council Changed Its Mind</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>94%</td><td>100%</td><td>100%</td><td>94%</td><td>100%</td><td>88%</td><td>100%</td><td>50%</td><td>50%</td><td>50%</td><td>94%</td><td>94%</td><td>100%</td><td>100%</td><td>50%</td><td>81%</td><td>94%</td></tr>
-<tr><td>One Season</td><td>6%</td><td>31%</td><td>44%</td><td>100%</td><td>12%</td><td>100%</td><td>81%</td><td>100%</td><td>0%</td><td>81%</td><td>100%</td><td>81%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>94%</td><td>0%</td><td>100%</td></tr>
-<tr><td>Toolmakers</td><td>75%</td><td>88%</td><td>94%</td><td>100%</td><td>0%</td><td>100%</td><td>94%</td><td>100%</td><td>0%</td><td>94%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>0%</td><td>100%</td></tr>
-<tr><td>First Night</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr>
-<tr><td>Everyone Has a Job</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr>
-<tr><td>A Full Year</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>First Catch</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>19%</td><td>56%</td><td>56%</td><td>56%</td><td>19%</td><td>19%</td><td>38%</td><td>31%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>Winter Survived</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>Roast</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>Somewhere to Put Things</td><td>6%</td><td>19%</td><td>25%</td><td>31%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>62%</td><td>62%</td><td>62%</td><td>19%</td><td>19%</td><td>6%</td><td>25%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>A Wedding</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>Fish Supper</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>A Fire in the Village</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
-<tr><td>Something to Study</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
-<tr><td>Nobody Lost to Winter</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
-<tr><td>A Place to Think</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
-<tr><td>First Garden</td><td>0%</td><td>12%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>25%</td><td>25%</td><td>25%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
-<tr><td>A Full Larder</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>12%</td><td>12%</td><td>12%</td><td>0%</td><td>0%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
-<tr><td>A Year Without a Death</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>75%</td></tr>
-<tr><td>A Roof</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>56%</td></tr>
-<tr><td>A Home of One&#x27;s Own</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>56%</td></tr>
-<tr><td>A Proper Village</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>56%</td></tr>
-<tr><td>Seeds in the Ground</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>38%</td></tr>
-<tr><td>First Harvest</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>38%</td></tr>
-<tr><td>Carpentry</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>31%</td></tr>
-<tr><td>A Child Is Born</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>19%</td></tr>
-<tr><td>Bear Down</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td></tr>
+<div class='card'><table><tr><th>achievement</th><th>bc-bots</th><th>bc-bots-compass</th><th>bc-balanced</th><th>dagger-situational</th><th>ppo-from-dagger</th><th>dagger-situational-2</th><th>dagger-years</th><th>ppo-outcomes</th><th>ppo-from-nothing</th><th>dagger-years</th><th>bc-reads-items-corrected</th><th>dagger-compass</th><th>dagger-sees-now</th><th>dagger-family</th><th>dagger-family</th><th>dagger-family</th><th>dagger-family-two-years</th><th>dagger-family-two-years</th><th>dagger-family-cool</th><th>dagger-family-turns</th><th>ppo-family</th><th>dagger-family-pairs</th><th>blind choice</th><th>scripted bots</th></tr>
+<tr><td>Wolf Down</td><td>0%</td><td>12%</td><td>25%</td><td>100%</td><td>12%</td><td>100%</td><td>94%</td><td>100%</td><td>12%</td><td>94%</td><td>100%</td><td>94%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>94%</td><td>100%</td><td>0%</td><td>100%</td></tr>
+<tr><td>The Council Changed Its Mind</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>94%</td><td>100%</td><td>100%</td><td>94%</td><td>100%</td><td>88%</td><td>100%</td><td>50%</td><td>50%</td><td>50%</td><td>94%</td><td>94%</td><td>100%</td><td>100%</td><td>50%</td><td>100%</td><td>81%</td><td>94%</td></tr>
+<tr><td>Everyone Has a Job</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr>
+<tr><td>One Season</td><td>6%</td><td>31%</td><td>44%</td><td>100%</td><td>12%</td><td>100%</td><td>81%</td><td>100%</td><td>0%</td><td>81%</td><td>100%</td><td>81%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>94%</td><td>100%</td><td>0%</td><td>100%</td></tr>
+<tr><td>Toolmakers</td><td>75%</td><td>88%</td><td>94%</td><td>100%</td><td>0%</td><td>100%</td><td>94%</td><td>100%</td><td>0%</td><td>94%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>0%</td><td>100%</td></tr>
+<tr><td>First Night</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr>
+<tr><td>Good Company</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>0%</td><td>100%</td></tr>
+<tr><td>Somewhere to Put Things</td><td>6%</td><td>19%</td><td>25%</td><td>31%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>62%</td><td>62%</td><td>62%</td><td>19%</td><td>19%</td><td>6%</td><td>25%</td><td>0%</td><td>6%</td><td>0%</td><td>94%</td></tr>
+<tr><td>A Fire in the Village</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
+<tr><td>Winter Survived</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
+<tr><td>A Full Year</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
+<tr><td>Fish Supper</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
+<tr><td>A Wedding</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
+<tr><td>Roast</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>94%</td></tr>
+<tr><td>First Catch</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>19%</td><td>56%</td><td>56%</td><td>56%</td><td>19%</td><td>19%</td><td>38%</td><td>31%</td><td>0%</td><td>25%</td><td>0%</td><td>94%</td></tr>
+<tr><td>Nobody Lost to Winter</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
+<tr><td>Something to Study</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
+<tr><td>First Garden</td><td>0%</td><td>12%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>25%</td><td>25%</td><td>25%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
+<tr><td>A Full Larder</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>12%</td><td>12%</td><td>12%</td><td>0%</td><td>0%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
+<tr><td>A Place to Think</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>88%</td></tr>
+<tr><td>A Year Without a Death</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>75%</td></tr>
+<tr><td>A Proper Village</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>56%</td></tr>
+<tr><td>A Home of One&#x27;s Own</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>56%</td></tr>
+<tr><td>A Roof</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>56%</td></tr>
+<tr><td>First Harvest</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>38%</td></tr>
+<tr><td>Seeds in the Ground</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>6%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>38%</td></tr>
+<tr><td>Carpentry</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>31%</td></tr>
+<tr><td>A Child Is Born</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>19%</td></tr>
+<tr><td>Bear Down</td><td>0%</td><td>0%</td><td>0%</td><td>6%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td></tr>
 </table></div>
 <h2>3. Everything that was tried, in order</h2><p>The journal: each experiment as the script that ran it wrote it down, and between them the notes on what was understood and why the next one was set up as it was.</p>
 <h3>20261007-1251-bc-bots<span class='kind'>imitation</span></h3>
@@ -2380,4 +2387,90 @@ code { background: #e9ecf2; padding: 1px 5px; border-radius: 3px; font-size: 13p
 <p><b>Share of villages that reached each achievement:</b></p>
 <table><tr><th>achievement</th><th>this network</th><th>scripted bots</th></tr><tr><td>Wolf Down</td><td>94%</td><td>100%</td></tr><tr><td>One Season</td><td>94%</td><td>100%</td></tr><tr><td>First Night</td><td>100%</td><td>100%</td></tr><tr><td>Good Company</td><td>100%</td><td>100%</td></tr><tr><td>Everyone Has a Job</td><td>100%</td><td>100%</td></tr><tr><td>Toolmakers</td><td>100%</td><td>100%</td></tr><tr><td>Winter Survived</td><td>0%</td><td>94%</td></tr><tr><td>A Fire in the Village</td><td>0%</td><td>94%</td></tr><tr><td>First Catch</td><td>0%</td><td>94%</td></tr><tr><td>A Full Year</td><td>0%</td><td>94%</td></tr><tr><td>The Council Changed Its Mind</td><td>50%</td><td>94%</td></tr><tr><td>A Wedding</td><td>0%</td><td>94%</td></tr><tr><td>Roast</td><td>0%</td><td>94%</td></tr><tr><td>Fish Supper</td><td>0%</td><td>94%</td></tr><tr><td>Somewhere to Put Things</td><td>0%</td><td>94%</td></tr><tr><td>Something to Study</td><td>0%</td><td>88%</td></tr><tr><td>Nobody Lost to Winter</td><td>0%</td><td>88%</td></tr><tr><td>A Full Larder</td><td>0%</td><td>88%</td></tr><tr><td>A Place to Think</td><td>0%</td><td>88%</td></tr><tr><td>First Garden</td><td>0%</td><td>88%</td></tr><tr><td>A Year Without a Death</td><td>0%</td><td>75%</td></tr><tr><td>A Proper Village</td><td>0%</td><td>56%</td></tr><tr><td>A Home of One&#x27;s Own</td><td>0%</td><td>56%</td></tr><tr><td>A Roof</td><td>0%</td><td>56%</td></tr><tr><td>First Harvest</td><td>0%</td><td>38%</td></tr><tr><td>Seeds in the Ground</td><td>0%</td><td>38%</td></tr><tr><td>Carpentry</td><td>0%</td><td>31%</td></tr><tr><td>A Child Is Born</td><td>0%</td><td>19%</td></tr></table></div>
 <p class='cmd'>ML/evaluate.py --model ML/experiments/20261012-0919-ppo-family/model.pt --name eval-ppo-family-28d --villages 16 --days 28 --temperature 0.5 --note &quot;After learning from outcomes: a year on the same 16 maps, picking at temperature 0.5.&quot;</p>
+<h3>20261012-0950-dagger-family-pairs<span class='kind'>imitation with correction</span></h3>
+<div class='card'><p>Told by the bot to make the pickaxe, the network walked on 73% of the ticks and crafted on 7%, and never kept at it for the five ticks it takes; so no stone and no fire. In the bots&#x27; villages that advice is 240 ticks in 3.7 million. Here the loss weighs every action together with its argument, so the pickaxe, the chest, the fire and the tent each count for themselves and not as one craft_build among the cooked fish.</p>
+<p><b>Why.</b> Trained only on villages the bots ran, the network had never seen where its own slips lead. Here it plays, the bot says on every tick what it would have done in that villager&#x27;s place, and those situations are added to the training data. <b>The bot&#x27;s advice.</b> It keeps a villager&#x27;s plan only while the villager does as advised; when the villager does something else the advice starts again from the situation, so it never hangs on a plan the network left and cannot see. Rare actions are weighted up in the loss (power 0.75). <b>Setup.</b> Started from <code>20261012-0022-dagger-family</code>. 10 rounds; each plays 24 new villages for up to 2400 ticks (10 days), then trains 1 passes over the 40 recorded villages plus everything gathered so far (lr 0.0003). In the first rounds the bot&#x27;s own choice is played part of the time, so the villages last long enough to be worth learning from. The gathered data is in <code>ML/data/datasets/20261012-0950-dagger-family-pairs/</code>. It also trained on what earlier correction runs gathered: ML/data/datasets/20261012-0022-dagger-family,ML/data/datasets/20261012-0740-dagger-family-cool.</p>
+<table><tr><th>round</th><th>bot plays</th><th>days lasted</th><th>alive at the end</th><th>wiped out</th><th>same choice as the bot, while playing</th><th>on recorded villages (held out)</th></tr><tr><td>1</td><td>0%</td><td>10</td><td>4.958</td><td>0 of 24</td><td>0.5752</td><td>0.7498</td></tr><tr><td>2</td><td>0%</td><td>10</td><td>4.792</td><td>0 of 24</td><td>0.6361</td><td>0.7403</td></tr><tr><td>3</td><td>0%</td><td>10</td><td>5.125</td><td>0 of 24</td><td>0.6409</td><td>0.7543</td></tr><tr><td>4</td><td>0%</td><td>10</td><td>4.917</td><td>0 of 24</td><td>0.6289</td><td>0.7289</td></tr><tr><td>5</td><td>0%</td><td>10</td><td>5.333</td><td>0 of 24</td><td>0.6751</td><td>0.7496</td></tr><tr><td>6</td><td>0%</td><td>10</td><td>5.083</td><td>0 of 24</td><td>0.6618</td><td>0.7179</td></tr><tr><td>7</td><td>0%</td><td>10</td><td>5.042</td><td>0 of 24</td><td>0.6835</td><td>0.7649</td></tr><tr><td>8</td><td>0%</td><td>10</td><td>5.083</td><td>0 of 24</td><td>0.6833</td><td>0.7586</td></tr><tr><td>9</td><td>0%</td><td>10</td><td>5.167</td><td>0 of 24</td><td>0.6599</td><td>0.734</td></tr><tr><td>10</td><td>0%</td><td>10</td><td>4.75</td><td>0 of 24</td><td>0.6827</td><td>0.7751</td></tr></table>
+<p>&quot;Days lasted&quot; in the last rounds is the network alone. Whether it can run a village for a whole year is the evaluation that follows.</p></div>
+<div class='card'><svg xmlns="http://www.w3.org/2000/svg" width="1140" height="260" viewBox="0 0 1140 260" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+<rect width="1140" height="260" fill="white"/>
+<text x="52" y="18" font-size="13" font-weight="600">Days a village lasted (of 10)</text>
+<line x1="52" y1="220.0" x2="366" y2="220.0" stroke="#e3e5e8"/>
+<text x="46" y="224.0" text-anchor="end" fill="#555">9.95</text>
+<line x1="52" y1="172.5" x2="366" y2="172.5" stroke="#e3e5e8"/>
+<text x="46" y="176.5" text-anchor="end" fill="#555">10.2</text>
+<line x1="52" y1="125.0" x2="366" y2="125.0" stroke="#e3e5e8"/>
+<text x="46" y="129.0" text-anchor="end" fill="#555">10.5</text>
+<line x1="52" y1="77.5" x2="366" y2="77.5" stroke="#e3e5e8"/>
+<text x="46" y="81.5" text-anchor="end" fill="#555">10.8</text>
+<line x1="52" y1="30.0" x2="366" y2="30.0" stroke="#e3e5e8"/>
+<text x="46" y="34.0" text-anchor="end" fill="#555">11.1</text>
+<text x="52.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="130.5" y="236" text-anchor="middle" fill="#555">3.25</text>
+<text x="209.0" y="236" text-anchor="middle" fill="#555">5.5</text>
+<text x="287.5" y="236" text-anchor="middle" fill="#555">7.75</text>
+<text x="366.0" y="236" text-anchor="middle" fill="#555">10</text>
+<text x="209" y="254" text-anchor="middle" fill="#555">round</text>
+<rect x="52" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="52.0,211.4 86.9,211.4 121.8,211.4 156.7,211.4 191.6,211.4 226.4,211.4 261.3,211.4 296.2,211.4 331.1,211.4 366.0,211.4" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="60" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="74" y="41" fill="#333">days_lived</text>
+<text x="432" y="18" font-size="13" font-weight="600">Same choice as the bot</text>
+<line x1="432" y1="220.0" x2="746" y2="220.0" stroke="#e3e5e8"/>
+<text x="426" y="224.0" text-anchor="end" fill="#555">0.565</text>
+<line x1="432" y1="172.5" x2="746" y2="172.5" stroke="#e3e5e8"/>
+<text x="426" y="176.5" text-anchor="end" fill="#555">0.62</text>
+<line x1="432" y1="125.0" x2="746" y2="125.0" stroke="#e3e5e8"/>
+<text x="426" y="129.0" text-anchor="end" fill="#555">0.675</text>
+<line x1="432" y1="77.5" x2="746" y2="77.5" stroke="#e3e5e8"/>
+<text x="426" y="81.5" text-anchor="end" fill="#555">0.73</text>
+<line x1="432" y1="30.0" x2="746" y2="30.0" stroke="#e3e5e8"/>
+<text x="426" y="34.0" text-anchor="end" fill="#555">0.785</text>
+<text x="432.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="510.5" y="236" text-anchor="middle" fill="#555">3.25</text>
+<text x="589.0" y="236" text-anchor="middle" fill="#555">5.5</text>
+<text x="667.5" y="236" text-anchor="middle" fill="#555">7.75</text>
+<text x="746.0" y="236" text-anchor="middle" fill="#555">10</text>
+<text x="589" y="254" text-anchor="middle" fill="#555">round</text>
+<rect x="432" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="432.0,211.4 466.9,158.8 501.8,154.6 536.7,165.0 571.6,125.0 606.4,136.5 641.3,117.7 676.2,118.0 711.1,138.2 746.0,118.5" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="440" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="454" y="41" fill="#333">agreement_while_playing</text>
+<polyline points="432.0,60.5 466.9,68.7 501.8,56.6 536.7,78.5 571.6,60.7 606.4,88.0 641.3,47.4 676.2,52.9 711.1,74.1 746.0,38.6" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="550" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="564" y="41" fill="#333">val_both_acc</text>
+<text x="812" y="18" font-size="13" font-weight="600">Loss</text>
+<line x1="812" y1="220.0" x2="1126" y2="220.0" stroke="#e3e5e8"/>
+<text x="806" y="224.0" text-anchor="end" fill="#555">0.505</text>
+<line x1="812" y1="172.5" x2="1126" y2="172.5" stroke="#e3e5e8"/>
+<text x="806" y="176.5" text-anchor="end" fill="#555">0.582</text>
+<line x1="812" y1="125.0" x2="1126" y2="125.0" stroke="#e3e5e8"/>
+<text x="806" y="129.0" text-anchor="end" fill="#555">0.659</text>
+<line x1="812" y1="77.5" x2="1126" y2="77.5" stroke="#e3e5e8"/>
+<text x="806" y="81.5" text-anchor="end" fill="#555">0.736</text>
+<line x1="812" y1="30.0" x2="1126" y2="30.0" stroke="#e3e5e8"/>
+<text x="806" y="34.0" text-anchor="end" fill="#555">0.813</text>
+<text x="812.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="890.5" y="236" text-anchor="middle" fill="#555">3.25</text>
+<text x="969.0" y="236" text-anchor="middle" fill="#555">5.5</text>
+<text x="1047.5" y="236" text-anchor="middle" fill="#555">7.75</text>
+<text x="1126.0" y="236" text-anchor="middle" fill="#555">10</text>
+<text x="969" y="254" text-anchor="middle" fill="#555">round</text>
+<rect x="812" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="812.0,106.2 846.9,143.7 881.8,161.5 916.7,167.5 951.6,181.2 986.4,191.6 1021.3,196.1 1056.2,204.8 1091.1,204.6 1126.0,211.4" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="820" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="834" y="41" fill="#333">train_loss</text>
+<polyline points="812.0,77.6 846.9,62.9 881.8,75.9 916.7,50.3 951.6,78.1 986.4,38.6 1021.3,110.2 1056.2,83.4 1091.1,58.5 1126.0,119.6" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="930" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="944" y="41" fill="#333">val_loss</text>
+</svg></div>
+<p class='cmd'>ML/train_dagger.py --start 20261012-0022-dagger-family --dataset ML/data/datasets/bots-family --extra ML/data/datasets/20261012-0022-dagger-family,ML/data/datasets/20261012-0740-dagger-family-cool --name dagger-family-pairs --rounds 10 --villages 24 --horizon 2400 --bot-share 0 --epochs 1 --seed 17000 --temperature 0.5 --batches 500 --balance 0.75 --pairs --note &quot;Told by the bot to make the pickaxe, the network walked on 73% of the ticks and crafted on 7%, and never kept at it for the five ticks it takes; so no stone and no fire. In the bots&#x27; villages that advice is 240 ticks in 3.7 million. Here the loss weighs every action together with its argument, so the pickaxe, the chest, the fire and the tent each count for themselves and not as one craft_build among the cooked fish.&quot;</p>
+<h3>20261012-1003-eval-family-pairs-28d<span class='kind'>evaluation</span></h3>
+<div class='card'><p>After correction weighing action and argument together: a year on the same 16 maps, picking at temperature 0.5.</p>
+<p><b>Setup.</b> The network of <code>20261012-0950-dagger-family-pairs</code> played 16 villages (seeds 1001 to 1016, none of them used in training) for up to 28 days each, sampling its choices (temperature 0.5), choosing only among what the engine allows. The scripted bots played the same seeds. Each village is recorded in <code>ML/data/runs/20261012-1003-eval-family-pairs-28d/</code> with its own report. The network played 20,407 villager-ticks a second.</p>
+<p><b>Averages over the villages:</b></p>
+<table><tr><th></th><th>villages</th><th>days lived</th><th>alive at the end</th><th>achievements</th><th>buildings</th><th>weddings</th><th>children born</th><th>technologies</th><th>things crafted</th><th>things gathered</th><th>crops reaped</th><th>villager-days</th><th>reward per villager-tick</th></tr><tr><td>this network</td><td>16</td><td>18.81</td><td>0</td><td>7.312</td><td>0.0625</td><td>0</td><td>0</td><td>0</td><td>11.75</td><td>703.8</td><td>0</td><td>89.69</td><td>-0.01633</td></tr><tr><td>scripted bots</td><td>16</td><td>27.47</td><td>5.625</td><td>22.5</td><td>4.438</td><td>1.438</td><td>0.1875</td><td>0.3125</td><td>142.9</td><td>837.5</td><td>2.062</td><td>163.7</td><td>0.002906</td></tr></table>
+<p><b>Share of villages that reached each achievement:</b></p>
+<table><tr><th>achievement</th><th>this network</th><th>scripted bots</th></tr><tr><td>Wolf Down</td><td>100%</td><td>100%</td></tr><tr><td>One Season</td><td>100%</td><td>100%</td></tr><tr><td>The Council Changed Its Mind</td><td>100%</td><td>94%</td></tr><tr><td>Good Company</td><td>100%</td><td>100%</td></tr><tr><td>First Night</td><td>100%</td><td>100%</td></tr><tr><td>Toolmakers</td><td>100%</td><td>100%</td></tr><tr><td>Everyone Has a Job</td><td>100%</td><td>100%</td></tr><tr><td>A Wedding</td><td>0%</td><td>94%</td></tr><tr><td>First Catch</td><td>25%</td><td>94%</td></tr><tr><td>Somewhere to Put Things</td><td>6%</td><td>94%</td></tr><tr><td>A Fire in the Village</td><td>0%</td><td>94%</td></tr><tr><td>A Full Year</td><td>0%</td><td>94%</td></tr><tr><td>Fish Supper</td><td>0%</td><td>94%</td></tr><tr><td>Roast</td><td>0%</td><td>94%</td></tr><tr><td>Winter Survived</td><td>0%</td><td>94%</td></tr><tr><td>Nobody Lost to Winter</td><td>0%</td><td>88%</td></tr><tr><td>Something to Study</td><td>0%</td><td>88%</td></tr><tr><td>A Place to Think</td><td>0%</td><td>88%</td></tr><tr><td>A Full Larder</td><td>0%</td><td>88%</td></tr><tr><td>First Garden</td><td>0%</td><td>88%</td></tr><tr><td>A Year Without a Death</td><td>0%</td><td>75%</td></tr><tr><td>A Proper Village</td><td>0%</td><td>56%</td></tr><tr><td>A Roof</td><td>0%</td><td>56%</td></tr><tr><td>A Home of One&#x27;s Own</td><td>0%</td><td>56%</td></tr><tr><td>First Harvest</td><td>0%</td><td>38%</td></tr><tr><td>Seeds in the Ground</td><td>0%</td><td>38%</td></tr><tr><td>Carpentry</td><td>0%</td><td>31%</td></tr><tr><td>A Child Is Born</td><td>0%</td><td>19%</td></tr></table></div>
+<p class='cmd'>ML/evaluate.py --model ML/experiments/20261012-0950-dagger-family-pairs/model.pt --name eval-family-pairs-28d --villages 16 --days 28 --temperature 0.5 --note &quot;After correction weighing action and argument together: a year on the same 16 maps, picking at temperature 0.5.&quot;</p>
 <h2>4. How to run it again</h2><p>See <code>ML/README.md</code>. Each experiment's folder under <code>ML/experiments/</code> has its exact command and settings in <code>config.json</code>; the villages it played are recorded under <code>ML/data/runs/</code> and can be replayed tick for tick.</p></main></body></html>

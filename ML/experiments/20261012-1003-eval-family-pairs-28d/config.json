@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0950-dagger-family-pairs/model.pt",
+ "name": "eval-family-pairs-28d",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 0.5,
+ "note": "After correction weighing action and argument together: a year on the same 16 maps, picking at temperature 0.5.",
+ "model_from": "20261012-0950-dagger-family-pairs",
+ "device": "cuda",
+ "experiment": "20261012-1003-eval-family-pairs-28d",
+ "kind": "evaluation",
+ "started": "2026-10-12T10:03:15",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0950-dagger-family-pairs/model.pt --name eval-family-pairs-28d --villages 16 --days 28 --temperature 0.5 --note \"After correction weighing action and argument together: a year on the same 16 maps, picking at temperature 0.5.\"",
+ "code": "ea484e6 + uncommitted changes"
+}
