@@ -1,0 +1,82 @@
+{
+ "val_action_acc": 0.776692126052024,
+ "val_arg_acc": 0.9214097394540943,
+ "val_both_acc": 0.7728189564521019,
+ "val_loss": 0.7147428280684736,
+ "best_epoch": 15,
+ "most_common_acc": 0.286762458937075,
+ "blind_pick_acc": 0.11378867464989788,
+ "train_rows": 1534258,
+ "val_rows": 314152,
+ "parameters": 665130,
+ "per_action": [
+  {
+   "action": "sleep",
+   "share of choices": 0.2837106087425109,
+   "chosen as recorded": 0.9749650460337141
+  },
+  {
+   "action": "emote_none",
+   "share of choices": 0.14486028522993905,
+   "chosen as recorded": 0.8550762076982692
+  },
+  {
+   "action": "move_west",
+   "share of choices": 0.09972195507123265,
+   "chosen as recorded": 0.5547883518462924
+  },
+  {
+   "action": "move_east",
+   "share of choices": 0.09844212511647575,
+   "chosen as recorded": 0.5620390785372158
+  },
+  {
+   "action": "harvest_attack",
+   "share of choices": 0.09314692223349039,
+   "chosen as recorded": 0.9638423526575871
+  },
+  {
+   "action": "move_south",
+   "share of choices": 0.09235731954210528,
+   "chosen as recorded": 0.5957455429497569
+  },
+  {
+   "action": "move_north",
+   "share of choices": 0.09124214607275571,
+   "chosen as recorded": 0.5877696661471578
+  },
+  {
+   "action": "craft_build",
+   "share of choices": 0.06439191237281222,
+   "chosen as recorded": 0.8716220142965072
+  },
+  {
+   "action": "consume",
+   "share of choices": 0.01859121407962638,
+   "chosen as recorded": 0.06763285024154589
+  },
+  {
+   "action": "vote",
+   "share of choices": 0.008259019620317113,
+   "chosen as recorded": 1.0
+  },
+  {
+   "action": "deposit",
+   "share of choices": 0.0032182858511430527,
+   "chosen as recorded": 0.42093023255813955
+  },
+  {
+   "action": "equip",
+   "share of choices": 0.0011413688193007338,
+   "chosen as recorded": 0.0
+  },
+  {
+   "action": "take",
+   "share of choices": 0.0009168372482907534,
+   "chosen as recorded": 0.1510204081632653
+  }
+ ],
+ "experiment": "20261007-1251-bc-bots",
+ "kind": "imitation",
+ "minutes": 2.8
+}

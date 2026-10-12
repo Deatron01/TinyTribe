@@ -1,0 +1,174 @@
+{
+ "name": "ppo-outcomes",
+ "start": "20261008-1927-dagger-years",
+ "updates": 600,
+ "envs": 32,
+ "steps": 128,
+ "days": 28,
+ "together": false,
+ "gamma": 0.999,
+ "lam": 0.95,
+ "lr": 3e-05,
+ "critic_lr": 0.001,
+ "epochs": 3,
+ "minibatches": 4,
+ "clip": 0.1,
+ "target_kl": 0.015,
+ "entropy": 0.003,
+ "critic_warmup": 30,
+ "teacher_coef": 1.0,
+ "teacher_updates": 150,
+ "shaping": -1.0,
+ "hidden": 128,
+ "seed": 20000,
+ "note": "Stage 2 again, with the trainer rewritten after the first attempt (see the note on why that one failed). The corrected imitation network plays whole years, 32 villages out of step with each other, and is paid only for outcomes.",
+ "device": "cuda",
+ "agents": 6,
+ "layout": {
+  "grid_size": 11,
+  "grid_channels": 5,
+  "channel_sizes": [
+   9,
+   7,
+   20,
+   28,
+   13
+  ],
+  "vector_length": 189,
+  "action_count": 21,
+  "arg_count": 68,
+  "fields": {
+   "needs": [
+    0,
+    6
+   ],
+   "core stats": [
+    6,
+    4
+   ],
+   "social stats": [
+    10,
+    4
+   ],
+   "inventory": [
+    14,
+    20
+   ],
+   "equipped tool": [
+    34,
+    2
+   ],
+   "clothing": [
+    36,
+    4
+   ],
+   "time of day": [
+    40,
+    2
+   ],
+   "season": [
+    42,
+    4
+   ],
+   "weather": [
+    46,
+    4
+   ],
+   "role": [
+    50,
+    1
+   ],
+   "age": [
+    51,
+    1
+   ],
+   "sickness flags": [
+    52,
+    8
+   ],
+   "skill levels": [
+    60,
+    7
+   ],
+   "traits": [
+    67,
+    12
+   ],
+   "ideology": [
+    79,
+    4
+   ],
+   "status flags": [
+    83,
+    4
+   ],
+   "home direction": [
+    87,
+    2
+   ],
+   "village direction": [
+    89,
+    2
+   ],
+   "faced progress": [
+    91,
+    1
+   ],
+   "faced agent": [
+    92,
+    5
+   ],
+   "village stock": [
+    97,
+    4
+   ],
+   "village state": [
+    101,
+    6
+   ],
+   "role counts": [
+    107,
+    12
+   ],
+   "vote context": [
+    119,
+    11
+   ],
+   "wealth": [
+    130,
+    2
+   ],
+   "vote subject role": [
+    132,
+    1
+   ],
+   "vote is review": [
+    133,
+    1
+   ],
+   "village works": [
+    134,
+    27
+   ],
+   "technologies known": [
+    161,
+    6
+   ],
+   "technology studied": [
+    167,
+    1
+   ],
+   "compass": [
+    168,
+    21
+   ]
+  }
+ },
+ "workbook_sha256": "c6d836e1fffafe0c53aa8c81216333d26fa30af5c240135f34f6a97d9224de5d",
+ "parameters": 667818,
+ "experiment": "20261008-1939-ppo-outcomes",
+ "kind": "learning from outcomes",
+ "started": "2026-10-08T19:39:12",
+ "command": "ML/train_ppo.py --start 20261008-1927-dagger-years --name ppo-outcomes --updates 600 --envs 32 --steps 128 --days 28 --note \"Stage 2 again, with the trainer rewritten after the first attempt (see the note on why that one failed). The corrected imitation network plays whole years, 32 villages out of step with each other, and is paid only for outcomes.\"",
+ "code": "f89a002 + uncommitted changes"
+}

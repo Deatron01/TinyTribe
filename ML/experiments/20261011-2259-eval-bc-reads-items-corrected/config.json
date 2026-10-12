@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261011-2250-bc-reads-items-corrected/model.pt",
+ "name": "eval-bc-reads-items-corrected",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "note": "The network that reads items and jobs, taught on the situations earlier networks were corrected on: a year on the same 16 maps.",
+ "model_from": "20261011-2250-bc-reads-items-corrected",
+ "device": "cuda",
+ "experiment": "20261011-2259-eval-bc-reads-items-corrected",
+ "kind": "evaluation",
+ "started": "2026-10-11T22:59:28",
+ "command": "ML/evaluate.py --model ML/experiments/20261011-2250-bc-reads-items-corrected/model.pt --name eval-bc-reads-items-corrected --villages 16 --days 28 --note \"The network that reads items and jobs, taught on the situations earlier networks were corrected on: a year on the same 16 maps.\"",
+ "code": "f89a002 + uncommitted changes"
+}

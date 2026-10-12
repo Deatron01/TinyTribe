@@ -97,3 +97,18 @@ desktop.ini
 
 # ---- Claude Code local settings ----
 .claude/settings.local.json
+
+# ---- The standalone simulation program (ML/host) ----
+# Its project file is ours (the rule above ignores every .csproj); its build output is not.
+!ML/host/*.csproj
+ML/host/bin/
+ML/host/obj/
+# Experiments keep their settings, numbers and curves; the weights are rebuilt by running the experiment again.
+ML/experiments/**/*.pt
+
+# The Edit-mode tests built without Unity
+ML/tests/bin/
+ML/tests/obj/
+
+# Copies of the simulator and its data set aside for a long run
+ML/host/frozen*/

@@ -1,0 +1,229 @@
+{
+ "dataset": "ML/data/datasets/bots",
+ "name": "bc-reads-items",
+ "epochs": 16,
+ "length": 128,
+ "blocks": 12,
+ "burn_in": 16,
+ "hidden": 128,
+ "lr": 0.001,
+ "val": 0.17,
+ "return_weight": 0.0,
+ "gamma": 0.999,
+ "balance": 0.5,
+ "raw": false,
+ "seed": 0,
+ "note": "Every network so far walked toward wood no better than a coin toss (a step toward the tree the bot meant on 50% of moves) and never built anything. In the vector an item is one number, its id over 57, and so is a job: a wooden spear is 0.895 and an iron spear 0.912. Here the network first turns those numbers back into what they stand for (how much of each item it carries, what is in its hand, which job it has). Everything else is as in bc-balanced.",
+ "device": "cuda",
+ "parameters": 693418,
+ "layout": {
+  "grid_size": 11,
+  "grid_channels": 5,
+  "channel_sizes": [
+   9,
+   7,
+   20,
+   28,
+   13
+  ],
+  "vector_length": 189,
+  "action_count": 21,
+  "arg_count": 68,
+  "fields": {
+   "needs": [
+    0,
+    6
+   ],
+   "core stats": [
+    6,
+    4
+   ],
+   "social stats": [
+    10,
+    4
+   ],
+   "inventory": [
+    14,
+    20
+   ],
+   "equipped tool": [
+    34,
+    2
+   ],
+   "clothing": [
+    36,
+    4
+   ],
+   "time of day": [
+    40,
+    2
+   ],
+   "season": [
+    42,
+    4
+   ],
+   "weather": [
+    46,
+    4
+   ],
+   "role": [
+    50,
+    1
+   ],
+   "age": [
+    51,
+    1
+   ],
+   "sickness flags": [
+    52,
+    8
+   ],
+   "skill levels": [
+    60,
+    7
+   ],
+   "traits": [
+    67,
+    12
+   ],
+   "ideology": [
+    79,
+    4
+   ],
+   "status flags": [
+    83,
+    4
+   ],
+   "home direction": [
+    87,
+    2
+   ],
+   "village direction": [
+    89,
+    2
+   ],
+   "faced progress": [
+    91,
+    1
+   ],
+   "faced agent": [
+    92,
+    5
+   ],
+   "village stock": [
+    97,
+    4
+   ],
+   "village state": [
+    101,
+    6
+   ],
+   "role counts": [
+    107,
+    12
+   ],
+   "vote context": [
+    119,
+    11
+   ],
+   "wealth": [
+    130,
+    2
+   ],
+   "vote subject role": [
+    132,
+    1
+   ],
+   "vote is review": [
+    133,
+    1
+   ],
+   "village works": [
+    134,
+    27
+   ],
+   "technologies known": [
+    161,
+    6
+   ],
+   "technology studied": [
+    167,
+    1
+   ],
+   "compass": [
+    168,
+    21
+   ]
+  },
+  "item_scale": 57,
+  "role_scale": 12
+ },
+ "train_villages": [
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  112,
+  113,
+  114,
+  115,
+  116,
+  117,
+  118,
+  119,
+  120,
+  121,
+  122,
+  123,
+  124,
+  125,
+  126,
+  127,
+  128,
+  129,
+  130,
+  131,
+  132,
+  133,
+  134,
+  135,
+  136,
+  137,
+  138,
+  139,
+  140
+ ],
+ "val_villages": [
+  141,
+  142,
+  143,
+  144,
+  145,
+  146,
+  147,
+  148
+ ],
+ "train_rows": 1534258,
+ "val_rows": 314152,
+ "workbook_sha256": "4b628a1530169eb99508ea4928e7677950198950742eb42459955fe345531730",
+ "demonstrator": [
+  "Survival"
+ ],
+ "baselines": {
+  "most_common_action": 14,
+  "most_common_acc": 0.286762458937075,
+  "blind_pick_acc": 0.11378867464989788
+ },
+ "experiment": "20261011-2244-bc-reads-items",
+ "kind": "imitation",
+ "started": "2026-10-11T22:44:40",
+ "command": "ML/train_bc.py --dataset ML/data/datasets/bots --name bc-reads-items --epochs 16 --balance 0.5 --note \"Every network so far walked toward wood no better than a coin toss (a step toward the tree the bot meant on 50% of moves) and never built anything. In the vector an item is one number, its id over 57, and so is a job: a wooden spear is 0.895 and an iron spear 0.912. Here the network first turns those numbers back into what they stand for (how much of each item it carries, what is in its hand, which job it has). Everything else is as in bc-balanced.\"",
+ "code": "f89a002 + uncommitted changes"
+}

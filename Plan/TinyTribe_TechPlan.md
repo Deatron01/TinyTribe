@@ -93,7 +93,7 @@ AISim_English_v12.xlsx  --export script-->  JSON data files
 | Scripting backend | IL2CPP | Required for Android 64-bit; faster than Mono |
 | Android target | ARM64, minimum Android 8 (API 26) | Covers practically all current phones |
 | Input | Input System package | One code path for keyboard, mouse and touch |
-| UI | uGUI (Canvas) | Simplest for a HUD, inventory and the Social Web view |
+| UI | Immediate-mode GUI (`OnGUI`) for the control windows | Built entirely from code, so it needs no scene or asset files (the repo tracks scripts only). A styled in-game UI can replace it later |
 
 Packages to add:
 
@@ -118,6 +118,18 @@ Packages to add:
 
 Start with free placeholder art and replace it later. The list of what needs a sprite comes straight from the workbook: 9 terrain types, 19 resource nodes, 25 buildings, 4 animals, 12 emotes, 57 item icons, and the agent.
 
+**Art in use (since 2026-10-06).** Three free CC0 packs are downloaded into `Game/ArtSources/` (not in git):
+
+| Pack | Source | Used for |
+|---|---|---|
+| Ninja Adventure - Asset Pack, by Pixel-Boy and AAA | pixel-boy.itch.io/ninja-adventure-asset-pack | Terrain, trees, rocks, ores, plants, 12 villager characters with walk frames, the tent, chest and well, the campfire's flame, and the animals. Also holds item icons, emotes, UI, sounds and music not wired in yet |
+| Kenney Roguelike/RPG pack | kenney.nl/assets/roguelike-rpg-pack | Not used yet; spare tiles |
+| Kenney Emotes pack | kenney.nl/assets/emotes-pack | Not used yet; emote bubbles |
+
+`python tools/install_art.py` copies the 49 files the game uses into `Assets/Resources/Art/`. `Assets/Editor/ArtImportSettings.cs` imports them as pixel art, and `Assets/View/PackArt.cs` maps game ids to tiles. If the art is missing, the game draws simple pictures in code instead, so a fresh clone still runs.
+
+Stand-ins to replace when better CC0 sprites turn up: the pack has no wolf, deer or rabbit, so a black dog, a brown horse and a hamster are used; the bear is the pack's red bear. The campfire's stone ring is drawn in code (the pack's is two tiles wide). Buildings without a picture of their own (everything beyond the tent, chest, well and campfire) get a plain house drawn in code, coloured by category. A building site is its finished picture drawn faintly.
+
 The local ComfyUI install can produce concept images, but it does not make clean, grid-aligned pixel art; treat it as reference only.
 
 ## 6. AI and training pipeline
@@ -126,20 +138,15 @@ The local ComfyUI install can produce concept images, but it does not make clean
 
 **Phase 1: Behavioral Cloning (course weeks 1-9).**
 
-1. Play the game in Unity. The logger writes one row per agent per tick in the format of the `Sim BC Log Schema` sheet: grid, 132-float vector, action masks, chosen action and argument.
-2. Train in PyTorch: a CNN over the 11x11x5 grid, an MLP over the vector, an LSTM on top, and two output heads (21 actions, 66 arguments). The custom loss from the GDD is written here.
+1. Play the game in Unity. The logger writes one row per agent per tick in the format of the `Sim BC Log Schema` sheet: grid, 189-float vector, action masks, chosen action and argument.
+2. Train in PyTorch: a CNN over the 11x11x5 grid, an MLP over the vector, an LSTM on top, and two output heads (21 actions, 68 arguments). The custom loss from the GDD is written here.
 3. Export to `.onnx`, drop the file into the Unity project, and the ONNX brain plays the game.
 
 This phase needs nothing but Unity, Python and the Inference Engine.
 
-**Phase 2: Reinforcement Learning (after week 9).** Python must drive the Unity simulation step by step. Two ways to connect them; decide at week 9, not now:
+**Phase 2: Reinforcement Learning.** Python must drive the simulation step by step. Decided 2026-10-08: neither ML-Agents option. The rules live in two assemblies that use no Unity types (`Assets/Sim`, `Assets/Brains`), so the same C# files are also built as a console program, `ML/host` (.NET, no Unity needed to run it). It plays and records villages, turns recorded runs into datasets, and serves villages to Python over a pipe: actions in, and for every villager what it sees, may do and earned out. Measured: about 70,000 villager-ticks a second with 16 villages, observation and masks included; a year of six villagers records in half a second. Training code (`ML/*.py`) is ours throughout: imitation, imitation with correction, PPO. See `ML/README.md`.
 
-| Option | What it is | Trade-off |
-|---|---|---|
-| A. ML-Agents as the bridge, our own PPO | Use the ML-Agents package and its low-level Python API only to pass observations and actions; training code stays ours | Keeps the models ours. Needs a separate Python 3.10 environment, because ML-Agents recommends Python 3.10.12 |
-| B. ML-Agents built-in trainers | Use its ready-made PPO / MA-POCA | Fastest to get running, but the network architecture and loss are no longer ours, which conflicts with the course requirements |
-
-Recommendation: A.
+One caveat found on the way: a run recorded in Unity does not always replay exactly in the standalone program and the other way round (Unity's runtime keeps extra precision inside sums and products of three or more decimals). Within either, a replay is exact. Training, export and evaluation all use the standalone program.
 
 **Inference in the game.** Models run through the Inference Engine on the CPU backend. The networks are small, so this is cheap.
 
@@ -154,22 +161,28 @@ The game is light, and these rules keep it that way:
 - All agents that share a model are evaluated in one batched inference call per tick.
 - Headless training runs the sim core with rendering off, as fast as the CPU allows.
 
+Measured in the Editor on this machine (2026-10-06, `Benchmark_full_village_ticks_per_second`): about 60,000 ticks per second for the rules alone with 40 villagers and some 95 animals on a 128x128 map, each villager taking a random action every tick. Animals look for villagers through a coarse grid, so the ones far from everyone cost almost nothing. The survival bot, which plans routes, is slower than the rules; a neural network will be slower still, so the rules are not the bottleneck.
+
 ## 8. Project layout and version control
 
 ```
 TinyTribe/
   Plan/                     design documents and the workbook
-  Game/                     the Unity project
+  Game/TinyTribe/           the Unity project
     Assets/
-      Sim/                  sim core (plain C#, own assembly)
-      View/                 rendering, UI, input
-      Brains/               human, scripted, ONNX
-      Art/                  sprites, atlases, tilesets
-      StreamingAssets/Data/ exported JSON from the workbook
+      Sim/                  sim core (plain C#, own assembly, no Unity types)
+      Brains/               brains and the runner that steps the sim (plain C#): survival bot (decisions, village, council, routes), random, manual; ONNX later
+      View/                 map, buildings, animals, villagers, camera, windows, launch screen
+      Editor/               import settings for the art
+      Resources/Art/        installed art (not committed)
+      StreamingAssets/Data/ exported JSON from the workbook (not committed)
       Models/               .onnx files
-      Tests/
+      Tests/EditMode/       rules, bots, data
+      Tests/PlayMode/       the running game
+  Game/ArtSources/          downloaded art packs (not committed)
   ML/                       Python: export script, training, notebooks
     data/                   recorded play logs (not committed)
+  tools/                    install_art.py
   Server/                   Docker leaderboard (week 13)
 ```
 
@@ -212,6 +225,10 @@ Everything is free except two optional items: Aseprite (about 20 USD) and the Go
 | 9. Android build, touch UI, performance pass | 10-12 | Week 12 deliverable |
 | 10. Docker leaderboard | 13 | Week 13 deliverable |
 | 11. Demo polish; reinforcement learning and later-Age content if time allows | 14 | Final presentation |
+
+**Where this stands (2026-10-08).** Steps 1 to 5 and 7 to 8 are done except for the Android module; step 6 (presenting the dataset) is a matter of showing what exists. The rules cover the map, needs, gathering, tools, crafting, building, storage, fire, homes, animals, roles, the Council with job reviews, weather, research, farming and (optional) sickness: 534 tests without graphics, 34 in Play mode. A villager's observation (grid, 189-float vector with a compass, masks per action) and its rewards (outcome or shaping, shaping off) are in the engine. Every run is recorded and replayable; `ML/host` runs the simulation without Unity; recorded runs become datasets; and the training path is built end to end: imitation, imitation with correction, PPO on outcomes, year-long evaluation against the bots, export to ONNX, and the network playing in the game. Each experiment leaves its settings, numbers and curves under `ML/experiments/` and an entry in `ML/JOURNAL.md`; `ML/report.py` builds `ML/REPORT.html` from them. What the networks reached so far is in that report. Not built yet: justice, trade, the Ages, skills, traits and ideology (rule R34 in the workbook).
+
+**Since then (2026-10-11).** (1) Why no network could walk was found and fixed in two places: the compass now shows the nearest thing a villager could use by the way it would walk, and the bots go where it points (the vector is 195 floats); and the network's heads read what the villager sees now directly, beside its memory. The story with its numbers is in `ML/JOURNAL.md` and the workbook's Open Issues. (2) Family life is in the engine: age, emotes, giving, relationship scores, marriage, shared homes, children, grief and morale from company, with 19 tests; the bots greet each other, build a tent for a couple and sleep at home, so bot villages have weddings in the first year and children in the second. A village can grow, so recordings, replays, datasets and the trainer's villages take a changing number of villagers. (3) The Edit-mode tests also run without the Unity Editor: `dotnet test ML/tests` (549 tests in about 15 seconds).
 
 Build only phase 1 rows from the workbook first (Stone Age: 42 items, 23 recipes, 17 buildings). The Iron and Gold Age content, the economy, justice and ideologies come after a working AI village exists.
 

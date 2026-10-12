@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261011-2338-dagger-sees-now/model.pt",
+ "name": "eval-dagger-sees-now",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 1.0,
+ "note": "The network whose heads see the present, after imitation and eight rounds of correction: a year on the same 16 maps.",
+ "model_from": "20261011-2338-dagger-sees-now",
+ "device": "cuda",
+ "experiment": "20261011-2350-eval-dagger-sees-now",
+ "kind": "evaluation",
+ "started": "2026-10-11T23:50:24",
+ "command": "ML/evaluate.py --model ML/experiments/20261011-2338-dagger-sees-now/model.pt --name eval-dagger-sees-now --villages 16 --days 28 --note \"The network whose heads see the present, after imitation and eight rounds of correction: a year on the same 16 maps.\"",
+ "code": "f89a002 + uncommitted changes"
+}

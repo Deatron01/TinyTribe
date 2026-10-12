@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0022-dagger-family/model.pt",
+ "name": "eval-family-28d",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 1.0,
+ "note": "The network after imitation and twelve rounds of correction on the game with family life: a year on the same 16 maps, against the bots on the same maps. The longer rounds planned after this (whole years, two years) were not run: see the note that follows.",
+ "model_from": "20261012-0022-dagger-family",
+ "device": "cuda",
+ "experiment": "20261012-0647-eval-family-28d",
+ "kind": "evaluation",
+ "started": "2026-10-12T06:47:53",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0022-dagger-family/model.pt --name eval-family-28d --villages 16 --days 28 --note \"The network after imitation and twelve rounds of correction on the game with family life: a year on the same 16 maps, against the bots on the same maps. The longer rounds planned after this (whole years, two years) were not run: see the note that follows.\"",
+ "code": "f89a002 + uncommitted changes"
+}

@@ -1,0 +1,87 @@
+{
+ "val_action_acc": 0.7943836820161908,
+ "val_arg_acc": 0.9594950433705081,
+ "val_both_acc": 0.7932544356572625,
+ "val_loss": 0.6478898296793126,
+ "best_epoch": 12,
+ "most_common_acc": 0.26447155930378613,
+ "blind_pick_acc": 0.06867246900851674,
+ "train_rows": 3000320,
+ "val_rows": 613030,
+ "parameters": 1065386,
+ "per_action": [
+  {
+   "action": "sleep",
+   "share of choices": 0.26481201039504926,
+   "chosen as recorded": 0.9381954250211805
+  },
+  {
+   "action": "emote_none",
+   "share of choices": 0.16401742479480996,
+   "chosen as recorded": 0.8702922670071129
+  },
+  {
+   "action": "move_west",
+   "share of choices": 0.09291603567221941,
+   "chosen as recorded": 0.567869934403799
+  },
+  {
+   "action": "move_east",
+   "share of choices": 0.09264681137472656,
+   "chosen as recorded": 0.5801348024377447
+  },
+  {
+   "action": "move_south",
+   "share of choices": 0.08920672312898462,
+   "chosen as recorded": 0.6447373936370876
+  },
+  {
+   "action": "move_north",
+   "share of choices": 0.08857666348832427,
+   "chosen as recorded": 0.6433712560947296
+  },
+  {
+   "action": "harvest_attack",
+   "share of choices": 0.0841643763905248,
+   "chosen as recorded": 0.9528844658684497
+  },
+  {
+   "action": "craft_build",
+   "share of choices": 0.06627778712584366,
+   "chosen as recorded": 0.971311706629055
+  },
+  {
+   "action": "emote_happy",
+   "share of choices": 0.027098173387926038,
+   "chosen as recorded": 0.8480060714778529
+  },
+  {
+   "action": "consume",
+   "share of choices": 0.017449099781255258,
+   "chosen as recorded": 0.17657773491910425
+  },
+  {
+   "action": "vote",
+   "share of choices": 0.00721483725017294,
+   "chosen as recorded": 0.9997408655091993
+  },
+  {
+   "action": "deposit",
+   "share of choices": 0.003206386598612747,
+   "chosen as recorded": 0.7370262390670554
+  },
+  {
+   "action": "equip",
+   "share of choices": 0.001310598837100604,
+   "chosen as recorded": 0.7945791726105563
+  },
+  {
+   "action": "take",
+   "share of choices": 0.0011030717744498664,
+   "chosen as recorded": 0.8406779661016949
+  }
+ ],
+ "experiment": "20261011-2352-bc-family",
+ "kind": "imitation",
+ "minutes": 29.5
+}

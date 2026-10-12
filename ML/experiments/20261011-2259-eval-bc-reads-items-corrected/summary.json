@@ -1,0 +1,15 @@
+{
+ "this_network_days_lived": 18.682552083333334,
+ "this_network_alive_at_the_end": 0.0,
+ "this_network_achievements": 6.0,
+ "scripted_bots_days_lived": 26.940625,
+ "scripted_bots_alive_at_the_end": 5.125,
+ "scripted_bots_achievements": 20.3125,
+ "villages": 16,
+ "days": 28,
+ "model_from": "20261011-2250-bc-reads-items-corrected",
+ "villager_ticks_per_second": 14021,
+ "experiment": "20261011-2259-eval-bc-reads-items-corrected",
+ "kind": "evaluation",
+ "minutes": 0.5
+}

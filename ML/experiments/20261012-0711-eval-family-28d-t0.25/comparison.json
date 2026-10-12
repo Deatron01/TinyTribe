@@ -1,0 +1,82 @@
+{
+ "comparison": [
+  {
+   "": "this network",
+   "villages": 16,
+   "days lived": 18.769791666666666,
+   "alive at the end": 0.0,
+   "achievements": 8.4375,
+   "buildings": 1.8125,
+   "weddings": 0.0,
+   "children born": 0.0,
+   "technologies": 0.0,
+   "things crafted": 15.0,
+   "things gathered": 804.0,
+   "crops reaped": 0.0,
+   "villager-days": 74.075,
+   "reward per villager-tick": -0.01753125
+  },
+  {
+   "": "scripted bots",
+   "villages": 16,
+   "days lived": 27.472135416666667,
+   "alive at the end": 5.625,
+   "achievements": 22.5,
+   "buildings": 4.4375,
+   "weddings": 1.4375,
+   "children born": 0.1875,
+   "technologies": 0.3125,
+   "things crafted": 142.875,
+   "things gathered": 837.5,
+   "crops reaped": 2.0625,
+   "villager-days": 163.68098958333331,
+   "reward per villager-tick": 0.00290625
+  }
+ ],
+ "achievements": {
+  "this network": {
+   "Good Company": 1.0,
+   "Everyone Has a Job": 1.0,
+   "Toolmakers": 1.0,
+   "First Night": 1.0,
+   "Wolf Down": 1.0,
+   "Somewhere to Put Things": 0.8125,
+   "One Season": 1.0,
+   "First Catch": 0.6875,
+   "The Council Changed Its Mind": 0.5625,
+   "First Garden": 0.125,
+   "A Full Larder": 0.1875,
+   "A Proper Village": 0.0625
+  },
+  "scripted bots": {
+   "Good Company": 1.0,
+   "Everyone Has a Job": 1.0,
+   "Toolmakers": 1.0,
+   "Wolf Down": 1.0,
+   "First Night": 1.0,
+   "Somewhere to Put Things": 0.9375,
+   "A Full Larder": 0.875,
+   "One Season": 1.0,
+   "A Fire in the Village": 0.9375,
+   "First Catch": 0.9375,
+   "Fish Supper": 0.9375,
+   "First Garden": 0.875,
+   "The Council Changed Its Mind": 0.9375,
+   "Seeds in the Ground": 0.375,
+   "Roast": 0.9375,
+   "First Harvest": 0.375,
+   "A Place to Think": 0.875,
+   "Something to Study": 0.875,
+   "A Wedding": 0.9375,
+   "A Proper Village": 0.5625,
+   "A Roof": 0.5625,
+   "A Home of One's Own": 0.5625,
+   "Nobody Lost to Winter": 0.875,
+   "Winter Survived": 0.9375,
+   "A Full Year": 0.9375,
+   "A Year Without a Death": 0.75,
+   "A Child Is Born": 0.1875,
+   "Carpentry": 0.3125
+  }
+ }
+}

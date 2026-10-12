@@ -1,0 +1,23 @@
+{
+ "experiment": "20261008-1456-dagger-bots-2",
+ "kind": "imitation with correction",
+ "cut_short": true,
+ "rows_logged": 1,
+ "round": 1.0,
+ "bot_share": 0.0,
+ "days_lived": 5.074305555555555,
+ "alive_at_end": 0.041666666666666664,
+ "villages_wiped_out": 23.0,
+ "agreement_while_playing": 0.32355294745265406,
+ "rows_gathered": 1239757.0,
+ "train_loss": 0.791273854492908,
+ "train_action_acc": 0.7240103678902399,
+ "train_arg_acc": 0.915494629705137,
+ "train_both_acc": 0.7205357815519612,
+ "val_loss": 0.6411054754750326,
+ "val_action_acc": 0.8043806109504047,
+ "val_arg_acc": 0.92513182382134,
+ "val_both_acc": 0.8004550506505802,
+ "collect_seconds": 40.0,
+ "train_seconds": 398.0
+}

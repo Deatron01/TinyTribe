@@ -1,0 +1,177 @@
+{
+ "name": "ppo-family",
+ "start": "20261012-0022-dagger-family",
+ "updates": 300,
+ "envs": 32,
+ "steps": 128,
+ "days": 28,
+ "together": false,
+ "gamma": 0.999,
+ "lam": 0.95,
+ "lr": 3e-05,
+ "critic_lr": 0.001,
+ "epochs": 3,
+ "minibatches": 4,
+ "clip": 0.1,
+ "target_kl": 0.015,
+ "entropy": 0.003,
+ "critic_warmup": 30,
+ "teacher_coef": 1.0,
+ "teacher_updates": 150,
+ "shaping": -1.0,
+ "hidden": 128,
+ "slots": 6,
+ "seed": 20000,
+ "note": "Learning from outcomes, from the network of dagger-family: the first to start this stage that can keep a village going for ten days and sometimes builds a chest. Six places a village, so no children here.",
+ "device": "cuda",
+ "agents": 6,
+ "layout": {
+  "grid_size": 11,
+  "grid_channels": 5,
+  "channel_sizes": [
+   9,
+   7,
+   20,
+   28,
+   13
+  ],
+  "vector_length": 195,
+  "action_count": 21,
+  "arg_count": 68,
+  "fields": {
+   "needs": [
+    0,
+    6
+   ],
+   "core stats": [
+    6,
+    4
+   ],
+   "social stats": [
+    10,
+    4
+   ],
+   "inventory": [
+    14,
+    20
+   ],
+   "equipped tool": [
+    34,
+    2
+   ],
+   "clothing": [
+    36,
+    4
+   ],
+   "time of day": [
+    40,
+    2
+   ],
+   "season": [
+    42,
+    4
+   ],
+   "weather": [
+    46,
+    4
+   ],
+   "role": [
+    50,
+    1
+   ],
+   "age": [
+    51,
+    1
+   ],
+   "sickness flags": [
+    52,
+    8
+   ],
+   "skill levels": [
+    60,
+    7
+   ],
+   "traits": [
+    67,
+    12
+   ],
+   "ideology": [
+    79,
+    4
+   ],
+   "status flags": [
+    83,
+    4
+   ],
+   "home direction": [
+    87,
+    2
+   ],
+   "village direction": [
+    89,
+    2
+   ],
+   "faced progress": [
+    91,
+    1
+   ],
+   "faced agent": [
+    92,
+    5
+   ],
+   "village stock": [
+    97,
+    4
+   ],
+   "village state": [
+    101,
+    6
+   ],
+   "role counts": [
+    107,
+    12
+   ],
+   "vote context": [
+    119,
+    11
+   ],
+   "wealth": [
+    130,
+    2
+   ],
+   "vote subject role": [
+    132,
+    1
+   ],
+   "vote is review": [
+    133,
+    1
+   ],
+   "village works": [
+    134,
+    27
+   ],
+   "technologies known": [
+    161,
+    6
+   ],
+   "technology studied": [
+    167,
+    1
+   ],
+   "compass": [
+    168,
+    27
+   ]
+  },
+  "item_scale": 57,
+  "role_scale": 12
+ },
+ "workbook_sha256": "fb5310f6850939df6ce9dae795cc417b5f0b6b08b1f65996a5e2c2f308ab6c06",
+ "parameters": 1065386,
+ "experiment": "20261012-0919-ppo-family",
+ "kind": "learning from outcomes",
+ "started": "2026-10-12T09:19:48",
+ "command": "ML/train_ppo.py --start 20261012-0022-dagger-family --name ppo-family --updates 300 --envs 32 --steps 128 --days 28 --slots 6 --note \"Learning from outcomes, from the network of dagger-family: the first to start this stage that can keep a village going for ten days and sometimes builds a chest. Six places a village, so no children here.\"",
+ "code": "f89a002 + uncommitted changes"
+}

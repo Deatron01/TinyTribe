@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261008-1516-dagger-situational/model.pt",
+ "name": "eval-dagger-situational",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": true,
+ "note": "The corrected network alone for a year on the same 16 maps, against the bots and blind choice.",
+ "model_from": "20261008-1516-dagger-situational",
+ "device": "cuda",
+ "experiment": "20261008-1528-eval-dagger-situational",
+ "kind": "evaluation",
+ "started": "2026-10-08T15:28:21",
+ "command": "ML/evaluate.py --model ML/experiments/20261008-1516-dagger-situational/model.pt --name eval-dagger-situational --villages 16 --days 28 --random --note The corrected network alone for a year on the same 16 maps, against the bots and blind choice.",
+ "code": "f89a002 + uncommitted changes"
+}

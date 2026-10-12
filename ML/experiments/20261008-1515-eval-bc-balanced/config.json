@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261008-1506-bc-balanced/model.pt",
+ "name": "eval-bc-balanced",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "note": "Does weighting rare actions up keep the imitation network's villages alive longer? Same 16 maps.",
+ "model_from": "20261008-1506-bc-balanced",
+ "device": "cuda",
+ "experiment": "20261008-1515-eval-bc-balanced",
+ "kind": "evaluation",
+ "started": "2026-10-08T15:15:48",
+ "command": "ML/evaluate.py --model ML/experiments/20261008-1506-bc-balanced/model.pt --name eval-bc-balanced --villages 16 --days 28 --note Does weighting rare actions up keep the imitation network's villages alive longer? Same 16 maps.",
+ "code": "f89a002 + uncommitted changes"
+}

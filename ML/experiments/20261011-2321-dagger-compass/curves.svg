@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="260" viewBox="0 0 1140 260" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+<rect width="1140" height="260" fill="white"/>
+<text x="52" y="18" font-size="13" font-weight="600">Days a village lasted (of 10)</text>
+<line x1="52" y1="220.0" x2="366" y2="220.0" stroke="#e3e5e8"/>
+<text x="46" y="224.0" text-anchor="end" fill="#555">7.77</text>
+<line x1="52" y1="172.5" x2="366" y2="172.5" stroke="#e3e5e8"/>
+<text x="46" y="176.5" text-anchor="end" fill="#555">8.36</text>
+<line x1="52" y1="125.0" x2="366" y2="125.0" stroke="#e3e5e8"/>
+<text x="46" y="129.0" text-anchor="end" fill="#555">8.94</text>
+<line x1="52" y1="77.5" x2="366" y2="77.5" stroke="#e3e5e8"/>
+<text x="46" y="81.5" text-anchor="end" fill="#555">9.52</text>
+<line x1="52" y1="30.0" x2="366" y2="30.0" stroke="#e3e5e8"/>
+<text x="46" y="34.0" text-anchor="end" fill="#555">10.1</text>
+<text x="52.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="130.5" y="236" text-anchor="middle" fill="#555">2.75</text>
+<text x="209.0" y="236" text-anchor="middle" fill="#555">4.5</text>
+<text x="287.5" y="236" text-anchor="middle" fill="#555">6.25</text>
+<text x="366.0" y="236" text-anchor="middle" fill="#555">8</text>
+<text x="209" y="254" text-anchor="middle" fill="#555">round</text>
+<rect x="52" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="52.0,38.6 96.9,38.6 141.7,38.6 186.6,116.5 231.4,211.4 276.3,128.3 321.1,107.7 366.0,38.6" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="60" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="74" y="41" fill="#333">days_lived</text>
+<text x="432" y="18" font-size="13" font-weight="600">Same choice as the bot</text>
+<line x1="432" y1="220.0" x2="746" y2="220.0" stroke="#e3e5e8"/>
+<text x="426" y="224.0" text-anchor="end" fill="#555">0.328</text>
+<line x1="432" y1="172.5" x2="746" y2="172.5" stroke="#e3e5e8"/>
+<text x="426" y="176.5" text-anchor="end" fill="#555">0.451</text>
+<line x1="432" y1="125.0" x2="746" y2="125.0" stroke="#e3e5e8"/>
+<text x="426" y="129.0" text-anchor="end" fill="#555">0.573</text>
+<line x1="432" y1="77.5" x2="746" y2="77.5" stroke="#e3e5e8"/>
+<text x="426" y="81.5" text-anchor="end" fill="#555">0.695</text>
+<line x1="432" y1="30.0" x2="746" y2="30.0" stroke="#e3e5e8"/>
+<text x="426" y="34.0" text-anchor="end" fill="#555">0.818</text>
+<text x="432.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="510.5" y="236" text-anchor="middle" fill="#555">2.75</text>
+<text x="589.0" y="236" text-anchor="middle" fill="#555">4.5</text>
+<text x="667.5" y="236" text-anchor="middle" fill="#555">6.25</text>
+<text x="746.0" y="236" text-anchor="middle" fill="#555">8</text>
+<text x="589" y="254" text-anchor="middle" fill="#555">round</text>
+<rect x="432" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="432.0,126.2 476.9,147.8 521.7,173.5 566.6,211.4 611.4,195.5 656.3,183.1 701.1,169.8 746.0,167.4" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="440" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="454" y="41" fill="#333">agreement_while_playing</text>
+<polyline points="432.0,44.3 476.9,44.3 521.7,41.7 566.6,41.5 611.4,40.3 656.3,41.0 701.1,41.2 746.0,38.6" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="550" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="564" y="41" fill="#333">val_both_acc</text>
+<text x="812" y="18" font-size="13" font-weight="600">Loss</text>
+<line x1="812" y1="220.0" x2="1126" y2="220.0" stroke="#e3e5e8"/>
+<text x="806" y="224.0" text-anchor="end" fill="#555">0.644</text>
+<line x1="812" y1="172.5" x2="1126" y2="172.5" stroke="#e3e5e8"/>
+<text x="806" y="176.5" text-anchor="end" fill="#555">0.699</text>
+<line x1="812" y1="125.0" x2="1126" y2="125.0" stroke="#e3e5e8"/>
+<text x="806" y="129.0" text-anchor="end" fill="#555">0.753</text>
+<line x1="812" y1="77.5" x2="1126" y2="77.5" stroke="#e3e5e8"/>
+<text x="806" y="81.5" text-anchor="end" fill="#555">0.808</text>
+<line x1="812" y1="30.0" x2="1126" y2="30.0" stroke="#e3e5e8"/>
+<text x="806" y="34.0" text-anchor="end" fill="#555">0.862</text>
+<text x="812.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="890.5" y="236" text-anchor="middle" fill="#555">2.75</text>
+<text x="969.0" y="236" text-anchor="middle" fill="#555">4.5</text>
+<text x="1047.5" y="236" text-anchor="middle" fill="#555">6.25</text>
+<text x="1126.0" y="236" text-anchor="middle" fill="#555">8</text>
+<text x="969" y="254" text-anchor="middle" fill="#555">round</text>
+<rect x="812" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="812.0,94.2 856.9,55.8 901.7,38.6 946.6,38.8 991.4,58.6 1036.3,75.4 1081.1,92.0 1126.0,113.3" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="820" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="834" y="41" fill="#333">train_loss</text>
+<polyline points="812.0,182.0 856.9,179.0 901.7,194.9 946.6,192.1 991.4,199.0 1036.3,196.4 1081.1,209.3 1126.0,211.4" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="930" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="944" y="41" fill="#333">val_loss</text>
+</svg>

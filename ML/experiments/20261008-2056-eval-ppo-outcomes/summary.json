@@ -1,0 +1,15 @@
+{
+ "this_network_days_lived": 18.749739583333334,
+ "this_network_alive_at_the_end": 0.0,
+ "this_network_achievements": 6.0,
+ "scripted_bots_days_lived": 26.940625,
+ "scripted_bots_alive_at_the_end": 5.125,
+ "scripted_bots_achievements": 20.3125,
+ "villages": 16,
+ "days": 28,
+ "model_from": "20261008-1939-ppo-outcomes",
+ "villager_ticks_per_second": 10226,
+ "experiment": "20261008-2056-eval-ppo-outcomes",
+ "kind": "evaluation",
+ "minutes": 0.8
+}

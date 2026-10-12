@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="260" viewBox="0 0 1140 260" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+<rect width="1140" height="260" fill="white"/>
+<text x="52" y="18" font-size="13" font-weight="600">Loss</text>
+<line x1="52" y1="220.0" x2="366" y2="220.0" stroke="#e3e5e8"/>
+<text x="46" y="224.0" text-anchor="end" fill="#555">0.67</text>
+<line x1="52" y1="172.5" x2="366" y2="172.5" stroke="#e3e5e8"/>
+<text x="46" y="176.5" text-anchor="end" fill="#555">0.963</text>
+<line x1="52" y1="125.0" x2="366" y2="125.0" stroke="#e3e5e8"/>
+<text x="46" y="129.0" text-anchor="end" fill="#555">1.26</text>
+<line x1="52" y1="77.5" x2="366" y2="77.5" stroke="#e3e5e8"/>
+<text x="46" y="81.5" text-anchor="end" fill="#555">1.55</text>
+<line x1="52" y1="30.0" x2="366" y2="30.0" stroke="#e3e5e8"/>
+<text x="46" y="34.0" text-anchor="end" fill="#555">1.84</text>
+<text x="52.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="130.5" y="236" text-anchor="middle" fill="#555">2.75</text>
+<text x="209.0" y="236" text-anchor="middle" fill="#555">4.5</text>
+<text x="287.5" y="236" text-anchor="middle" fill="#555">6.25</text>
+<text x="366.0" y="236" text-anchor="middle" fill="#555">8</text>
+<text x="209" y="254" text-anchor="middle" fill="#555">epoch</text>
+<rect x="52" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="52.0,38.6 96.9,101.7 141.7,142.3 186.6,167.3 231.4,186.1 276.3,199.4 321.1,206.8 366.0,211.4" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="60" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="74" y="41" fill="#333">train_loss</text>
+<polyline points="52.0,101.7 96.9,136.7 141.7,176.1 186.6,188.5 231.4,194.7 276.3,206.5 321.1,207.4 366.0,208.2" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="170" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="184" y="41" fill="#333">val_loss</text>
+<text x="432" y="18" font-size="13" font-weight="600">Action chosen as recorded</text>
+<line x1="432" y1="220.0" x2="746" y2="220.0" stroke="#e3e5e8"/>
+<text x="426" y="224.0" text-anchor="end" fill="#555">0.39</text>
+<line x1="432" y1="172.5" x2="746" y2="172.5" stroke="#e3e5e8"/>
+<text x="426" y="176.5" text-anchor="end" fill="#555">0.484</text>
+<line x1="432" y1="125.0" x2="746" y2="125.0" stroke="#e3e5e8"/>
+<text x="426" y="129.0" text-anchor="end" fill="#555">0.577</text>
+<line x1="432" y1="77.5" x2="746" y2="77.5" stroke="#e3e5e8"/>
+<text x="426" y="81.5" text-anchor="end" fill="#555">0.67</text>
+<line x1="432" y1="30.0" x2="746" y2="30.0" stroke="#e3e5e8"/>
+<text x="426" y="34.0" text-anchor="end" fill="#555">0.763</text>
+<text x="432.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="510.5" y="236" text-anchor="middle" fill="#555">2.75</text>
+<text x="589.0" y="236" text-anchor="middle" fill="#555">4.5</text>
+<text x="667.5" y="236" text-anchor="middle" fill="#555">6.25</text>
+<text x="746.0" y="236" text-anchor="middle" fill="#555">8</text>
+<text x="589" y="254" text-anchor="middle" fill="#555">epoch</text>
+<rect x="432" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="432.0,211.4 476.9,155.3 521.7,120.8 566.6,96.7 611.4,77.4 656.3,63.1 701.1,54.9 746.0,49.7" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="440" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="454" y="41" fill="#333">train_action_acc</text>
+<polyline points="432.0,137.9 476.9,113.5 521.7,74.0 566.6,59.6 611.4,53.1 656.3,40.0 701.1,38.9 746.0,38.6" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="550" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="564" y="41" fill="#333">val_action_acc</text>
+<text x="812" y="18" font-size="13" font-weight="600">Argument chosen as recorded</text>
+<line x1="812" y1="220.0" x2="1126" y2="220.0" stroke="#e3e5e8"/>
+<text x="806" y="224.0" text-anchor="end" fill="#555">0.81</text>
+<line x1="812" y1="172.5" x2="1126" y2="172.5" stroke="#e3e5e8"/>
+<text x="806" y="176.5" text-anchor="end" fill="#555">0.85</text>
+<line x1="812" y1="125.0" x2="1126" y2="125.0" stroke="#e3e5e8"/>
+<text x="806" y="129.0" text-anchor="end" fill="#555">0.891</text>
+<line x1="812" y1="77.5" x2="1126" y2="77.5" stroke="#e3e5e8"/>
+<text x="806" y="81.5" text-anchor="end" fill="#555">0.931</text>
+<line x1="812" y1="30.0" x2="1126" y2="30.0" stroke="#e3e5e8"/>
+<text x="806" y="34.0" text-anchor="end" fill="#555">0.972</text>
+<text x="812.0" y="236" text-anchor="middle" fill="#555">1</text>
+<text x="890.5" y="236" text-anchor="middle" fill="#555">2.75</text>
+<text x="969.0" y="236" text-anchor="middle" fill="#555">4.5</text>
+<text x="1047.5" y="236" text-anchor="middle" fill="#555">6.25</text>
+<text x="1126.0" y="236" text-anchor="middle" fill="#555">8</text>
+<text x="969" y="254" text-anchor="middle" fill="#555">epoch</text>
+<rect x="812" y="30" width="314" height="190" fill="none" stroke="#9aa0a8"/>
+<polyline points="812.0,211.4 856.9,168.5 901.7,132.5 946.6,112.4 991.4,91.3 1036.3,75.1 1081.1,70.4 1126.0,64.5" fill="none" stroke="#2f6fdf" stroke-width="1.8"/>
+<rect x="820" y="36" width="10" height="3" fill="#2f6fdf"/>
+<text x="834" y="41" fill="#333">train_arg_acc</text>
+<polyline points="812.0,138.4 856.9,98.0 901.7,73.3 946.6,60.2 991.4,51.8 1036.3,45.8 1081.1,40.4 1126.0,38.6" fill="none" stroke="#e0702a" stroke-width="1.8"/>
+<rect x="930" y="36" width="10" height="3" fill="#e0702a"/>
+<text x="944" y="41" fill="#333">val_arg_acc</text>
+</svg>

@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0022-dagger-family/model.pt",
+ "name": "eval-family-28d-t0.25",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 0.25,
+ "note": "The same network as eval-family-28d, choosing closer to its highest-scoring action (temperature 0.25). Sampling as trained, it undid its own last step on a third of its steps.",
+ "model_from": "20261012-0022-dagger-family",
+ "device": "cuda",
+ "experiment": "20261012-0711-eval-family-28d-t0.25",
+ "kind": "evaluation",
+ "started": "2026-10-12T07:11:53",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0022-dagger-family/model.pt --name eval-family-28d-t0.25 --villages 16 --days 28 --temperature 0.25 --note \"The same network as eval-family-28d, choosing closer to its highest-scoring action (temperature 0.25). Sampling as trained, it undid its own last step on a third of its steps.\"",
+ "code": "f89a002 + uncommitted changes"
+}

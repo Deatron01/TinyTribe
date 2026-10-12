@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The simulation without Unity: the same C# files the game compiles (Assets/Sim and Assets/Brains,
+    which use no Unity types), built as a console program. It plays and records villages, turns
+    recorded runs into training data, and serves villages to the Python trainer.
+
+    Build:  dotnet build ML/host -c Release
+    Run:    ML/host/bin/Release/net10.0/tinytribe-host.exe help
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>tinytribe-host</AssemblyName>
+    <RootNamespace>TinyTribe.Host</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TieredPGO>true</TieredPGO>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <NoWarn>$(NoWarn);CS0649;CS0414</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Advice.cs" />
+    <Compile Include="..\..\Game\TinyTribe\Assets\Sim\**\*.cs" LinkBase="Sim" />
+    <Compile Include="..\..\Game\TinyTribe\Assets\Brains\**\*.cs" LinkBase="Brains" />
+  </ItemGroup>
+
+  <!-- The JSON library Unity already keeps for the game; from NuGet only if the Unity project was never opened here. -->
+  <ItemGroup>
+    <UnityNewtonsoft Include="..\..\Game\TinyTribe\Library\PackageCache\com.unity.nuget.newtonsoft-json@*\Runtime\Newtonsoft.Json.dll" />
+    <Reference Include="@(UnityNewtonsoft)" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" Condition="'@(UnityNewtonsoft)' == ''" />
+  </ItemGroup>
+
+</Project>

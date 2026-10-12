@@ -1,0 +1,11 @@
+{
+ "days_lived_last_round": 10.0,
+ "alive_at_end_last_round": 3.0416666666666665,
+ "agreement_while_playing": 0.46359257299383677,
+ "val_both_acc": 0.7954117509987936,
+ "rows_gathered": 1869068,
+ "started_from": "20261011-2316-bc-compass-walks",
+ "experiment": "20261011-2321-dagger-compass",
+ "kind": "imitation with correction",
+ "minutes": 7.7
+}

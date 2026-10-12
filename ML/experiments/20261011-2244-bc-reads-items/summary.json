@@ -1,0 +1,82 @@
+{
+ "val_action_acc": 0.7876979152243632,
+ "val_arg_acc": 0.9547921836228288,
+ "val_both_acc": 0.7865565464050625,
+ "val_loss": 0.6832448167237795,
+ "best_epoch": 16,
+ "most_common_acc": 0.286762458937075,
+ "blind_pick_acc": 0.11378867464989788,
+ "train_rows": 1534258,
+ "val_rows": 314152,
+ "parameters": 693418,
+ "per_action": [
+  {
+   "action": "sleep",
+   "share of choices": 0.2837106087425109,
+   "chosen as recorded": 0.9569076951486533
+  },
+  {
+   "action": "emote_none",
+   "share of choices": 0.14486028522993905,
+   "chosen as recorded": 0.8274606044949625
+  },
+  {
+   "action": "move_west",
+   "share of choices": 0.09972195507123265,
+   "chosen as recorded": 0.5550510357250075
+  },
+  {
+   "action": "move_east",
+   "share of choices": 0.09844212511647575,
+   "chosen as recorded": 0.5860640158138828
+  },
+  {
+   "action": "harvest_attack",
+   "share of choices": 0.09314692223349039,
+   "chosen as recorded": 0.9645253304407215
+  },
+  {
+   "action": "move_south",
+   "share of choices": 0.09235731954210528,
+   "chosen as recorded": 0.6418557536466775
+  },
+  {
+   "action": "move_north",
+   "share of choices": 0.09124214607275571,
+   "chosen as recorded": 0.6383397588384874
+  },
+  {
+   "action": "craft_build",
+   "share of choices": 0.06439191237281222,
+   "chosen as recorded": 0.9526355552972627
+  },
+  {
+   "action": "consume",
+   "share of choices": 0.01859121407962638,
+   "chosen as recorded": 0.11775362318840579
+  },
+  {
+   "action": "vote",
+   "share of choices": 0.008259019620317113,
+   "chosen as recorded": 1.0
+  },
+  {
+   "action": "deposit",
+   "share of choices": 0.0032182858511430527,
+   "chosen as recorded": 0.8244186046511628
+  },
+  {
+   "action": "equip",
+   "share of choices": 0.0011413688193007338,
+   "chosen as recorded": 0.6918032786885245
+  },
+  {
+   "action": "take",
+   "share of choices": 0.0009168372482907534,
+   "chosen as recorded": 0.7673469387755102
+  }
+ ],
+ "experiment": "20261011-2244-bc-reads-items",
+ "kind": "imitation",
+ "minutes": 3.0
+}

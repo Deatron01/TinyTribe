@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0919-ppo-family/model.pt",
+ "name": "eval-ppo-family-28d",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 0.5,
+ "note": "After learning from outcomes: a year on the same 16 maps, picking at temperature 0.5.",
+ "model_from": "20261012-0919-ppo-family",
+ "device": "cuda",
+ "experiment": "20261012-0941-eval-ppo-family-28d",
+ "kind": "evaluation",
+ "started": "2026-10-12T09:41:52",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0919-ppo-family/model.pt --name eval-ppo-family-28d --villages 16 --days 28 --temperature 0.5 --note \"After learning from outcomes: a year on the same 16 maps, picking at temperature 0.5.\"",
+ "code": "f89a002 + uncommitted changes"
+}

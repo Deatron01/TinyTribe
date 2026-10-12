@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0740-dagger-family-cool/model.pt",
+ "name": "eval-family-cool-28d",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 0.5,
+ "note": "After ten-day rounds played at temperature 0.5: a year on the same 16 maps, picking at 0.5.",
+ "model_from": "20261012-0740-dagger-family-cool",
+ "device": "cuda",
+ "experiment": "20261012-0753-eval-family-cool-28d",
+ "kind": "evaluation",
+ "started": "2026-10-12T07:53:04",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0740-dagger-family-cool/model.pt --name eval-family-cool-28d --villages 16 --days 28 --temperature 0.5 --note \"After ten-day rounds played at temperature 0.5: a year on the same 16 maps, picking at 0.5.\"",
+ "code": "f89a002 + uncommitted changes"
+}

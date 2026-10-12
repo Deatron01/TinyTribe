@@ -69,6 +69,13 @@ When a new agent arrives, the existing AI agents evaluate both the new agent's s
 * **Doctor** (Relies on INT, DEX): Crafts medicine at the *Clinic* and cures sicknesses.
 * **Builder** (Relies on DEX, END): Constructs infrastructure, requiring a *Drafting Table* for late-game blueprints.
 
+**The Council in the engine:**
+* Votes are held one at a time. A vote stays open for 20 ticks, or until every living villager has voted. Each villager votes once, with the Vote action and the option as its argument. A vote weighs 1 + Influence; the option with the most weight wins, and a tie or an empty vote changes nothing.
+* A job vote is held for every villager who arrives, and again at the turn of each season for anyone still without a job. So a new village assigns its own jobs on the first morning.
+* **Jobs are not for life (job review).** Whenever the village changes (a building is finished or lost, a technology is learned, someone with a job dies, the season turns) the Council goes over the jobs again: every living villager is put to a job vote in turn, and the winner becomes its job, which may be the one it has. A tie or an empty vote leaves the job alone. Reviews are held at most once a day. The engine only holds the votes; who is best placed where is for the villagers to work out.
+* A research vote is held whenever a place of study stands (an Elders' Circle or a Library) and nothing is being researched. The winner is studied there (Craft/Build with the research argument, facing it): at a Library a Scholar adds 0.1 points per tick times INT / 5, at an Elders' Circle half that, and anyone who is not a Scholar a quarter of either.
+* What a job changes so far: only a Builder can build beyond the basic set; job-only recipes need their job; a Lumberjack tires less felling trees; a Miner works ore faster and everyone else slower; a Butcher gets more from an animal; a Farmer's crops grow faster; a Scout far from the village gets hungry and thirsty more slowly; a Scholar researches at full speed. Cook, Tailor, Doctor and Guard have no effect yet.
+
 
 ### 2.6 Multi-Tiered Inventory & Logistics System
 Managing resources is a core challenge for the AI, functioning across multiple layers of access permissions:
@@ -78,6 +85,8 @@ Managing resources is a core challenge for the AI, functioning across multiple l
   * *General Storage Chest*: Holds raw wood, stone, and iron for Builders.
   * *Town Granary*: Specialized building that holds mass amounts of food (wheat, meat, berries) and significantly slows down food rot.
   * *Tool Rack / Armory*: Where the Blacksmith deposits finished axes and spears for other agents to take.
+* **The ground**: Deposit with no building in front puts the stack down on the free tile ahead as an item pile; Harvest picks a pile up again. This is the only way to empty a pack before the village has storage. A killed animal's loot that does not fit, and everything a dead villager carried, end up in piles the same way. Piles block movement like any other node.
+* **In the engine now**: the Basic Chest (20 slots, anyone may build and use it) is the first town storage; house chests belong to the residents; `storage_filter` limits what the specialised buildings accept.
 
 ### 2.6.5 Architecture & The Prefab Building System
 The game does not use a block-by-block building system (like Minecraft). Instead, it uses a **Prefab Blueprint System** (like Age of Empires or RimWorld). Builders gather specific raw materials and place down complete structures.
@@ -111,8 +120,21 @@ The game does not use a block-by-block building system (like Minecraft). Instead
 * **Community**: Clinic, Library / Lab, Prison. Late game: Council Square (boosts voting morale), The Market (trade hub), Village Bank (holds the village Gold).
 * **Home Ownership**: When agents claim a residential building, they gain access to its House Inventory. Sleeping in their own house provides a 'Sheltered' buff, speeding up Energy recovery and preventing Temperature drain.
 
+**How building works in the engine:**
+* A villager faces the way it last walked. Craft/Build with a building starts a *site* on the tile in front and takes the full cost at once; the footprint grows away from the builder. Every tile of it must be walkable and empty.
+* The same action, repeated while facing the site, adds progress until `build_ticks` is reached. Anyone allowed to build it can carry on with a site, without materials. Sites and buildings block movement.
+* Utility and storage buildings and the Hide Tent can be built by anyone. Everything else needs the Builder role, which the Council gives by vote.
+* **Simple first, better after research.** A village can do everything in a simple way from the start and in the better way after research. A **Garden Plot** (5 Pine Wood, 3 farm plots) and an **Elders' Circle** (6 Cobblestone and 4 Pine Wood, slow study of the simple technologies) need no research. Carpentry, studied at the circle, unlocks the Lumber Mill; planks, and with them the cabin, granary, library and the other plank buildings, follow from the mill. Agriculture unlocks the Farm Plot & Windmill (6 plots, flour). The Library studies everything, at full speed.
+* A recipe with a workstation needs the villager to face that building, finished, and for a Campfire, lit. A craft takes its inputs on the first tick; doing anything else before it is done abandons it and returns them.
+* **Campfire**: starts with one day of fuel; Deposit of wood (or coal, three times as long) while facing it adds more. A lit fire gives warmth to everyone within 2 tiles, instead of the weather's cold. A fire that has burnt down gives no warmth and cannot cook until it is fed again.
+* **Home**: Sleep while facing a house with room claims it. Sleeping while facing your own home is sheltered.
+* **Farm**: a finished Farm Plot turns six free tiles along its sides into farmland. A seed is planted on the empty farmland tile in front (Craft/Build with the crop as argument) in a season the crop allows. It grows at the pace of the season, faster for a Farmer, and is reaped with Harvest for its yield and seed. Crops in the field die when winter comes.
+* **Weather**: each day may bring a storm, a heatwave or rain, by the chances of the season. Rain and storms put campfires out (the fuel is lost) and rain chills everyone not asleep at home; a storm may wreck buildings, leaving what they stored on the ground; a heatwave doubles thirst and makes work more tiring.
+
 ### 2.7 Wildlife, Hunting & Sicknesses
 * **Hunting**: The ecosystem is populated by animals (Rabbits, Deer, Wolves, Bears). Agents must craft weapons (Spears, Bows) to hunt. Raw meat drops must be cooked at a campfire; eating it raw causes Food Poisoning.
+* **Sickness in the engine** (a launch option, off by default): common cold, food poisoning, infection, bleeding, heatstroke and scurvy work as listed in `Sim Sicknesses`. It is off by default because, as the numbers stand, an infection from a wolf bite never passes and its cure needs the Medicine technology; bot villages do not survive it (see `Open Issues`).
+* **Animals in the engine**: each animal stands on a tile and blocks it. Rabbits and deer run from any villager who comes close, faster than a villager walks. Wolves go for the nearest villager within 4 tiles and bite when next to it. Bears do the same within 3 tiles but stay near where they live and move at half a villager's speed, so they can be walked away from. Harvest/Attack hits the first animal on the faced line within the weapon's reach (1 tile for hands and tools, 2 for spears, 5 for a bow). Loot goes into the killer's pack. A map starts with each species at its density, never close to the village, and a species that has been thinned out gets one new animal a day. Sickness from bites is not in the engine yet.
 * **Sicknesses & Diseases**: Agents can contract diseases that severely impact performance, making the 'Doctor' role critical:
   * *Common Cold*: Caught from freezing or rain. Drains energy 2x faster and lowers max HP.
   * *Food Poisoning*: Caught from raw meat or bad berries. Causes vomiting (massive energy loss) and rapid hunger.
@@ -186,6 +208,7 @@ With distinct AI personalities (Kleptomaniacs, Low Empathy hoarders, Aggressive 
 The village does not start with all blueprints unlocked. Progression requires dedicated scientific effort.
 * **The Scholar**: A new role relying entirely on Intelligence (INT). Scholars do not gather food or build; they sit in the **Library / Laboratory** generating 'Research Points' (RP).
 * **Tech Nodes**: The Council votes on what to research next. 
+  * *Carpentry (60 RP)*: Unlocks the Lumber Mill, and so planks and everything built of them. Like Agriculture it can be studied at an Elders' Circle; the technologies after these need a Library.
   * *Agriculture (100 RP)*: Unlocks Farm Plot & Windmill, Farming Hoe, Flour and Bread.
   * *Medicine (200 RP)*: Unlocks Clinic, Bandage and Energy Potion.
   * *Metallurgy (300 RP)*: Required for the Iron Age (Unlocks Smeltery, Anvil, Cooking Stove, Copper/Iron Tools, Stone Bricks, Gold Minting, Prison, Stone Manor).
@@ -221,13 +244,22 @@ All concrete numbers (drain rates, recipes, costs, durations, probabilities) liv
 * **Time**: 1 tick = 1 agent action. 240 ticks = 1 day (160 day, 80 night). 7 days per season, 28 days per year. Agents age 1 year every 4 days, so a 60-year life lasts 240 days.
 * **Scales**: Needs run 0-100. Core stats (STR, DEX, INT, END) run 1-10. Social stats (Influence, Empathy, Sociability, Aggression) run 0-1.
 * **Phases**: Every item, recipe, building and resource node is tagged phase 1 (Stone Age), 2 (needs Metallurgy) or 3 (needs Economics). The first prototype implements phase 1 only.
-* **Status**: The current values are a first pass chosen to be internally consistent; they have not been playtested.
+* **Status**: The current values are a first pass chosen to be internally consistent; they have not been playtested by people. What the scripted bots have shown so far is recorded in the workbook's `Open Issues` sheet.
+* **In the engine so far**: the map and its generation, day and night, seasons, weather, the six needs, sleep, gathering with tools and durability, eating and drinking, equipment, crafting, building sites and buildings, storage, campfire warmth and fuel, homes, wells, item piles, animals that flee or attack, roles, the Council's votes and its job reviews, research at an Elders' Circle or a Library, garden and farm plots and crops, (as a launch option) sickness, the rewards whose systems exist, and the recording, counters and achievements of every run. Since 2026-10-11 also: age (childhood, old age and death of it), emotes, giving, relationship scores, marriage, shared homes, children who take after their parents, grief, and morale from company (rules R12, R22, R24). **Not yet** (rule R34): medicine given to others, the automatic emotes, justice, theft, the Market and trade, the Ages, food rot, skills, traits, ideology, depression and the low-morale penalties, the role bonuses of Cook, Tailor, Doctor and Guard, and inheritance of network weights (one network plays every villager).
 
 ## 3. Deep Learning & AI Architecture
 
 ### 3.1 Data Collection & Training Pipeline
 * **Phase 1: Behavioral Cloning (BC)**: Human players control agents to generate initial datasets (State -> Action mappings). This jumpstarts the AI's understanding of basic survival mechanics.
+  * A hand-written **survival bot** plays the same actions and is a second source of demonstrations and the baseline to beat. In order of urgency it: fights a wolf that comes for it and walks away from bears, votes when the Council asks, drinks, eats, keeps the village fire fed, sleeps by the fire at night, warms up when cold, makes itself a spear, keeps food and water in its pack, tidies its pack into the chest, and then works for the village by its job. The bots vote each other into jobs on the first morning, matching stats to what the village lacks: the Builder builds a chest and then a campfire, the Lumberjack keeps the chest and the fire in wood, the Butcher, Cook and Farmer make rods and fish, the Scholar studies when there is a Library, and everyone else fills the chest with food. On the test maps a village of six bots lives through a whole year with weather on. It sees the whole map, which the trained network will not. After the chest and the fire its Builder lays out a Garden Plot and an Elders' Circle, then, as research allows, a Lumber Mill, a Library and the big farm; its Farmer sows and reaps every plot and its Scholar studies whatever the Council chose. At every job vote the bots share the jobs out afresh among everyone alive. This bot is a baseline and a check that the rules can be played, not the AI: its habits are hand-written guesses (in four recorded years it kept a village alive every time but learned carpentry only once, having made its least clever villager the scholar), and doing better than it is what the learned villagers are for.
 * **Phase 2: Multi-Agent Reinforcement Learning (MARL)**: Agents transition to autonomous learning via PPO (Proximal Policy Optimization) with Centralized Training and Decentralized Execution (CTDE).
+* **The pipeline as built** (`ML/README.md` has the commands, `ML/JOURNAL.md` what each run showed, `ML/REPORT.html` everything on one page):
+  1. *Demonstrations.* The scripted bots play villages in the standalone simulator (the game's own C# rules built as a console program, no Unity); every village is recorded and can be replayed.
+  2. *Imitation.* One network, shared by all villagers (CNN over the view, MLP over the vector, LSTM, heads for action and argument), learns to choose what the bots chose. Rare but vital choices (eating, drinking, taking up a spear: under 2% of ticks) are weighted up, or they are not learned.
+  3. *Imitation with correction.* The network plays villages itself and the bot says, tick by tick, what it would have done there; those situations are added to the data. The bot advises from the situation: it keeps a plan only while the villager does as advised. Without this step the network can agree with the bots on four ticks in five and still lose its village within a week, because one slip takes it somewhere the bots never were.
+  4. *Learning from outcomes.* The network plays many villages at once and is paid only what the engine pays (3.4): PPO, each villager's own and village rewards mixed by its empathy. This is where it can come to play better than the bots it started from.
+  5. *Judging.* Every network plays whole years on maps nothing was trained on; the bots and blind choice play the same maps; every village is recorded with its achievements.
+  6. *Into the game.* The network is exported to ONNX and plays through Unity's Inference Engine ("Trained network" on the launch screen); a test checks the game gets the same numbers out of it as the trainer did.
 
 ### 3.2 State Representation (How the AI Sees)
 The AI does not process raw pixels. Every tick, the environment passes a multidimensional tensor representing the agent's observable state.
@@ -245,9 +277,11 @@ The AI does not process raw pixels. Every tick, the environment passes a multidi
   * Self status: sickness flags, skill levels, traits, ideology, married / jailed / convicted / has-home flags, and the direction to its home and to the village centre.
   * Faced target: progress on the tile in front; if it is an agent, that agent's HP (exact only for a Doctor), relationship score, role, and whether it is the spouse or a convict.
   * Village status: stock levels, population, current Age, research progress, share of starving agents and the number of agents per role. This is what lets an agent vote sensibly.
-  * Vote context: which Council vote is open and the stats of the agent being voted on.
-  * Total length: 132 floats. The exact index layout is in the `Sim Observation` sheet.
-* **Action Masks**: Every tick the engine also provides a mask of valid actions and valid arguments (e.g. Craft is masked without the ingredients, Vote is masked when no vote is open). Masks are applied to the policy's outputs, so the agent never has to learn which actions are impossible.
+  * Vote context: which Council vote is open, the stats of the agent being voted on, the job it has now, and whether the vote is a job review.
+  * What the village has: finished buildings of each kind, the technologies known and the one being studied. An agent sees only 11 x 11 tiles, so without this it could not learn what to build next or who is needed where.
+  * A compass: the way to the nearest water, food, wood and stone (within 32 tiles) and to the village's storage, fire and building site. A villager sees only 11 x 11 tiles; the first network trained without this wandered, because the bots it imitated plan over the whole map.
+  * Total length: 195 floats. The exact index layout is in the `Sim Observation` sheet.
+* **Action Masks**: Every tick the engine also provides a mask of valid actions and, for every action, of its valid arguments (e.g. Craft is masked without the ingredients, Vote is masked when no vote is open). Masks are applied to the policy's outputs, so the agent never has to learn which actions are impossible.
 * **Memory (LSTM/GRU)**: The combined flattened outputs of the CNN (processing the Grid) and the MLP (processing the Vector) are passed through an LSTM hidden state, allowing the agent to remember where it saw a resource off-screen 50 ticks ago.
 
 ### 3.3 The Action Space (Outputs)
@@ -261,11 +295,13 @@ Every tick, the neural network outputs a probability distribution over a **Discr
 * **Inventory (2)**: [Equip / Unequip] (chooses the tool, weapon or clothing in use), [Give / Use On] (hands an item to the faced agent; medicine is applied to them, which is how a Doctor heals).
 * **Council (1)**: [Vote] (casts an Influence-weighted vote on a role assignment, the next technology, or a conviction).
 
-That is 21 discrete actions in total. A second categorical output, the **argument head** (66 values), selects the item for Deposit / Take / Consume / Equip / Give, the entry for Craft/Build (any recipe, any building, a crop to plant, or research at the Library), and the option for Vote.
+That is 21 discrete actions in total. A second categorical output, the **argument head** (68 values), selects the item for Deposit / Take / Consume / Equip / Give, the entry for Craft/Build (any recipe, any building, a crop to plant, or research at the Library), and the option for Vote.
 
-The same few actions reach every mechanic through context: Harvest/Attack on water fishes when a rod is equipped, on a convict it detains when used by a Guard; Deposit and Take at the Market sell and buy for Gold; Deposit at a campfire adds fuel. The full mapping of mechanics to actions is in the `Sim Capability Audit` sheet and the exact resolution rules are in `Sim Rules`. Marriage, reproduction, ageing, sickness, ideology spread and relationship scores are resolved by the engine from behaviour and are not actions.
+The same few actions reach every mechanic through context: Harvest/Attack on water fishes when a rod is equipped, on a convict it detains when used by a Guard; Deposit and Take at the Market sell and buy for Gold; Deposit at a campfire adds fuel; Deposit on free ground puts the stack down. The full mapping of mechanics to actions is in the `Sim Capability Audit` sheet and the exact resolution rules are in `Sim Rules`. Marriage, reproduction, ageing, sickness, ideology spread and relationship scores are resolved by the engine from behaviour and are not actions.
 
 ### 3.4 The Reward Function (Mathematical Balancing)
+**Learn it, don't be told.** The villagers are meant to find out for themselves what is efficient. So every reward in the `Sim Rewards` sheet has a kind. *Outcome* rewards say how the villager and the village are doing: hurt, a need at zero, a death, a winter survived, a technology learned, a building finished. *Shaping* rewards pay for one particular action: eating when hungry, crafting, voting, refuelling the fire. All shaping rewards are multiplied by `reward_shaping_scale`, which is **0**: nothing tells a villager what to do. The scale is there to be raised early in a training run and brought back to 0 if learning from outcomes alone is too slow to start. The engine likewise only offers the means (a vote, a job review, a simple and a better building) and never chooses for a villager. In the engine so far: 7 outcome rewards and 6 shaping rewards; the rest belong to systems that are not built yet.
+
 The loss function is dynamically modified by the agent's genetic **Empathy** stat (ranging from 0.0 to 1.0). This mathematically forces different social behaviors in MARL.
 
 * **Equation Base**: 
@@ -316,6 +352,9 @@ To ensure the simulation can be played and observed on both **Desktop PCs and Mo
 ## 4. Evaluation & Performance Metrics
 * **AI Metrics**: Loss curves, action prediction accuracy on the Validation Set (imitating humans).
 * **Simulation Metrics**: Average colony lifespan (in ticks), resource generation rate, percentage of successful winters survived, tool usage efficiency, and successful crafting events.
+* **Every run is recorded.** A run goes into a folder of its own (`Sim Run Log Schema` sheet). The simulation is deterministic, so the setup plus every villager's action on every tick (`actions.bin`, two bytes a villager a tick) is the complete record: `RunReplay` plays any run again to any tick, checked against stored state hashes, and anything that was not saved, the observations included, is worked out from there. Beside it the folder holds every engine event (`events.bin`), the village and each villager every ten ticks (`timeline.csv`, `agents.csv`), and `run.json` with the settings, the data version, about 90 named counters and each villager's part; `report.md` is the same for a person to read. A year of six villagers is about 420 KB. `Runs/index.csv` has one line per run for comparing them, `RunBatch` plays many seeds without a screen, and `ML/runs.py` loads a run into pandas tables.
+* **Achievements.** The `Sim Achievements` sheet lists 37 milestones, each a counter of the run reaching a value (first fire, a garden, carpentry, a winter nobody died in, the Council changing its mind). A run notes the tick each was reached; the game shows them in the Achievements window. They are for people reading a run and are never part of a villager's reward or observation.
+* **The tree.** The Tree window draws everything that can be learned, built, made and sown as one tree, from the workbook's tables: what is known or built, what is being studied, what can be done now, and what is still locked, with the missing material named.
 * **Ablation Studies**: Comparing a purely reactive AI (Simple MLP) vs. Memory AI (CNN+LSTM) vs. Communicating Multi-Agent AI.
 
 ## 5. University Course Alignment (Roadmap)
@@ -323,7 +362,7 @@ This project is explicitly structured to fulfill the requirements of the **Intro
 
 ### Phase 1: Data Collection & Processing (Weeks 1-5)
 * **Week 2 (Project Idea Submission)**: Submit the TinyTribe GDD.
-* **Data Collection**: Before the AI can learn, we build a basic prototype and play it manually. The engine logs every tick: the Environment State (the 11x11x5 Grid + the 132-float state vector + the action masks) and the Human Action (one of the 21 actions plus its argument), in the format defined by the `Sim BC Log Schema` sheet. This creates a massive supervised dataset.
+* **Data Collection**: Before the AI can learn, we build a basic prototype and play it manually. The engine logs every tick: the Environment State (the 11x11x5 Grid + the 189-float state vector + the action masks) and the Human Action (one of the 21 actions plus its argument), in the format defined by the `Sim BC Log Schema` sheet. This creates a massive supervised dataset.
 * **Data Processing**: We normalize internal stats (HP/Hunger) to 0.0-1.0. We use One-Hot Encoding or Embedding for the discrete grid tiles (Pine Wood vs Oak Wood).
 * **Week 5 (Dataset Presentation)**: We present the cleaned, formatted CSV/JSON dataset of human gameplay.
 

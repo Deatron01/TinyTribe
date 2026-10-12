@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261008-1927-dagger-years/model.pt",
+ "name": "eval-dagger-years-greedy",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": true,
+ "random": false,
+ "note": "The same network as eval-dagger-years, but always taking its highest-scoring choice instead of picking by chance in proportion to the scores. Picking by chance, it made 431 put-down moves per village that the bot had not asked for and threw away what it had gathered.",
+ "model_from": "20261008-1927-dagger-years",
+ "device": "cuda",
+ "experiment": "20261008-2123-eval-dagger-years-greedy",
+ "kind": "evaluation",
+ "started": "2026-10-08T21:23:41",
+ "command": "ML/evaluate.py --model ML/experiments/20261008-1927-dagger-years/model.pt --name eval-dagger-years-greedy --villages 16 --days 28 --greedy --note \"The same network as eval-dagger-years, but always taking its highest-scoring choice instead of picking by chance in proportion to the scores. Picking by chance, it made 431 put-down moves per village that the bot had not asked for and threw away what it had gathered.\"",
+ "code": "f89a002 + uncommitted changes"
+}

@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0831-dagger-family-turns/model.pt",
+ "name": "eval-family-turns-28d",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 0.5,
+ "note": "After correction weighing the ticks that matter: a year on the same 16 maps, picking at temperature 0.5.",
+ "model_from": "20261012-0831-dagger-family-turns",
+ "device": "cuda",
+ "experiment": "20261012-0918-eval-family-turns-28d",
+ "kind": "evaluation",
+ "started": "2026-10-12T09:18:55",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0831-dagger-family-turns/model.pt --name eval-family-turns-28d --villages 16 --days 28 --temperature 0.5 --note \"After correction weighing the ticks that matter: a year on the same 16 maps, picking at temperature 0.5.\"",
+ "code": "f89a002 + uncommitted changes"
+}

@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261008-1903-dagger-situational-2/model.pt",
+ "name": "eval-dagger-situational-2",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "note": "After twenty rounds of correction in all: a year on the same 16 maps.",
+ "model_from": "20261008-1903-dagger-situational-2",
+ "device": "cuda",
+ "experiment": "20261008-1925-eval-dagger-situational-2",
+ "kind": "evaluation",
+ "started": "2026-10-08T19:25:16",
+ "command": "ML/evaluate.py --model ML/experiments/20261008-1903-dagger-situational-2/model.pt --name eval-dagger-situational-2 --villages 16 --days 28 --note \"After twenty rounds of correction in all: a year on the same 16 maps.\"",
+ "code": "f89a002 + uncommitted changes"
+}

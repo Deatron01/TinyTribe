@@ -1,0 +1,2 @@
+round,bot_share,days_lived,alive_at_end,villages_wiped_out,agreement_while_playing,rows_gathered,train_loss,train_action_acc,train_arg_acc,train_both_acc,val_loss,val_action_acc,val_arg_acc,val_both_acc,collect_seconds,train_seconds
+1,0.0,5.074305555555555,0.041666666666666664,23,0.32355294745265406,1239757,0.791273854492908,0.7240103678902399,0.915494629705137,0.7205357815519612,0.6411054754750326,0.8043806109504047,0.92513182382134,0.8004550506505802,40,398

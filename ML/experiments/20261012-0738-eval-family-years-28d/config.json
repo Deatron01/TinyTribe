@@ -1,0 +1,19 @@
+{
+ "model": "ML/experiments/20261012-0727-dagger-family-two-years/model.pt",
+ "name": "eval-family-years-28d",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "slots": 12,
+ "temperature": 0.5,
+ "note": "After correction over whole years and two years: 28 days on the same 16 maps, picking at temperature 0.5, against the bots on the same maps.",
+ "model_from": "20261012-0727-dagger-family-two-years",
+ "device": "cuda",
+ "experiment": "20261012-0738-eval-family-years-28d",
+ "kind": "evaluation",
+ "started": "2026-10-12T07:38:15",
+ "command": "ML/evaluate.py --model ML/experiments/20261012-0727-dagger-family-two-years/model.pt --name eval-family-years-28d --villages 16 --days 28 --temperature 0.5 --note \"After correction over whole years and two years: 28 days on the same 16 maps, picking at temperature 0.5, against the bots on the same maps.\"",
+ "code": "f89a002 + uncommitted changes"
+}

@@ -1,0 +1,15 @@
+{
+ "this_network_days_lived": 18.766145833333333,
+ "this_network_alive_at_the_end": 0.0,
+ "this_network_achievements": 6.0,
+ "scripted_bots_days_lived": 26.940625,
+ "scripted_bots_alive_at_the_end": 5.125,
+ "scripted_bots_achievements": 20.3125,
+ "villages": 16,
+ "days": 28,
+ "model_from": "20261008-1903-dagger-situational-2",
+ "villager_ticks_per_second": 15809,
+ "experiment": "20261008-1925-eval-dagger-situational-2",
+ "kind": "evaluation",
+ "minutes": 0.5
+}

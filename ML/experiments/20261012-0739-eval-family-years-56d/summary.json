@@ -1,0 +1,15 @@
+{
+ "this_network_days_lived": 19.020052083333333,
+ "this_network_alive_at_the_end": 0.0,
+ "this_network_achievements": 7.3125,
+ "scripted_bots_days_lived": 53.72213541666667,
+ "scripted_bots_alive_at_the_end": 5.375,
+ "scripted_bots_achievements": 25.875,
+ "villages": 16,
+ "days": 56,
+ "model_from": "20261012-0727-dagger-family-two-years",
+ "villager_ticks_per_second": 23330,
+ "experiment": "20261012-0739-eval-family-years-56d",
+ "kind": "evaluation",
+ "minutes": 0.8
+}

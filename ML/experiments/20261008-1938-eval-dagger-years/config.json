@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261008-1927-dagger-years/model.pt",
+ "name": "eval-dagger-years",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "note": "After correction over whole years: a year on the same 16 maps.",
+ "model_from": "20261008-1927-dagger-years",
+ "device": "cuda",
+ "experiment": "20261008-1938-eval-dagger-years",
+ "kind": "evaluation",
+ "started": "2026-10-08T19:38:36",
+ "command": "ML/evaluate.py --model ML/experiments/20261008-1927-dagger-years/model.pt --name eval-dagger-years --villages 16 --days 28 --note \"After correction over whole years: a year on the same 16 maps.\"",
+ "code": "f89a002 + uncommitted changes"
+}

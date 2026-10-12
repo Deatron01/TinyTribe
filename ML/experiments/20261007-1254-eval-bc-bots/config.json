@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261007-1251-bc-bots/model.pt",
+ "name": "eval-bc-bots",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": true,
+ "note": "Can the imitation network run a village by itself for a year? Agreeing with the bots tick by tick does not say so: its own small mistakes change what it sees next.",
+ "model_from": "20261007-1251-bc-bots",
+ "device": "cuda",
+ "experiment": "20261007-1254-eval-bc-bots",
+ "kind": "evaluation",
+ "started": "2026-10-07T12:54:57",
+ "command": "ML/evaluate.py --model ML/experiments/20261007-1251-bc-bots/model.pt --name eval-bc-bots --villages 16 --days 28 --random --note Can the imitation network run a village by itself for a year? Agreeing with the bots tick by tick does not say so: its own small mistakes change what it sees next.",
+ "code": "f89a002 + uncommitted changes"
+}

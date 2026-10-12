@@ -1,0 +1,28 @@
+{
+    "name": "TinyTribe.Tests.EditMode",
+    "rootNamespace": "TinyTribe.Tests",
+    "references": [
+        "TinyTribe.Sim",
+        "TinyTribe.Brains",
+        "Unity.InferenceEngine",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "TinyTribe.Neural"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

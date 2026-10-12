@@ -1,0 +1,172 @@
+{
+ "name": "ppo-from-dagger",
+ "start": "20261008-1516-dagger-situational",
+ "updates": 300,
+ "envs": 32,
+ "steps": 128,
+ "days": 7,
+ "gamma": 0.999,
+ "lam": 0.95,
+ "lr": 0.0001,
+ "epochs": 3,
+ "minibatches": 4,
+ "clip": 0.2,
+ "entropy": 0.01,
+ "value_coef": 0.5,
+ "value_warmup": 10,
+ "teacher_coef": 1.0,
+ "teacher_updates": 100,
+ "shaping": -1.0,
+ "hidden": 128,
+ "seed": 20000,
+ "note": "The first run of stage 2: the corrected imitation network plays villages and is paid only for outcomes (shaping off). Does what the engine pays make it better at keeping a village alive than imitation left it?",
+ "device": "cuda",
+ "agents": 6,
+ "layout": {
+  "grid_size": 11,
+  "grid_channels": 5,
+  "channel_sizes": [
+   9,
+   7,
+   20,
+   28,
+   13
+  ],
+  "vector_length": 189,
+  "action_count": 21,
+  "arg_count": 68,
+  "fields": {
+   "needs": [
+    0,
+    6
+   ],
+   "core stats": [
+    6,
+    4
+   ],
+   "social stats": [
+    10,
+    4
+   ],
+   "inventory": [
+    14,
+    20
+   ],
+   "equipped tool": [
+    34,
+    2
+   ],
+   "clothing": [
+    36,
+    4
+   ],
+   "time of day": [
+    40,
+    2
+   ],
+   "season": [
+    42,
+    4
+   ],
+   "weather": [
+    46,
+    4
+   ],
+   "role": [
+    50,
+    1
+   ],
+   "age": [
+    51,
+    1
+   ],
+   "sickness flags": [
+    52,
+    8
+   ],
+   "skill levels": [
+    60,
+    7
+   ],
+   "traits": [
+    67,
+    12
+   ],
+   "ideology": [
+    79,
+    4
+   ],
+   "status flags": [
+    83,
+    4
+   ],
+   "home direction": [
+    87,
+    2
+   ],
+   "village direction": [
+    89,
+    2
+   ],
+   "faced progress": [
+    91,
+    1
+   ],
+   "faced agent": [
+    92,
+    5
+   ],
+   "village stock": [
+    97,
+    4
+   ],
+   "village state": [
+    101,
+    6
+   ],
+   "role counts": [
+    107,
+    12
+   ],
+   "vote context": [
+    119,
+    11
+   ],
+   "wealth": [
+    130,
+    2
+   ],
+   "vote subject role": [
+    132,
+    1
+   ],
+   "vote is review": [
+    133,
+    1
+   ],
+   "village works": [
+    134,
+    27
+   ],
+   "technologies known": [
+    161,
+    6
+   ],
+   "technology studied": [
+    167,
+    1
+   ],
+   "compass": [
+    168,
+    21
+   ]
+  }
+ },
+ "workbook_sha256": "4b628a1530169eb99508ea4928e7677950198950742eb42459955fe345531730",
+ "parameters": 667818,
+ "experiment": "20261008-1529-ppo-from-dagger",
+ "kind": "learning from outcomes",
+ "started": "2026-10-08T15:29:11",
+ "command": "ML/train_ppo.py --start 20261008-1516-dagger-situational --name ppo-from-dagger --updates 300 --envs 32 --steps 128 --days 7 --note The first run of stage 2: the corrected imitation network plays villages and is paid only for outcomes (shaping off). Does what the engine pays make it better at keeping a village alive than imitation left it?",
+ "code": "f89a002 + uncommitted changes"
+}

@@ -1,0 +1,82 @@
+{
+ "val_action_acc": 0.7865977105264143,
+ "val_arg_acc": 0.9180366004962779,
+ "val_both_acc": 0.7825673688267851,
+ "val_loss": 0.683507572123161,
+ "best_epoch": 16,
+ "most_common_acc": 0.286762458937075,
+ "blind_pick_acc": 0.11378867464989788,
+ "train_rows": 1534258,
+ "val_rows": 314152,
+ "parameters": 667818,
+ "per_action": [
+  {
+   "action": "sleep",
+   "share of choices": 0.2837106087425109,
+   "chosen as recorded": 0.9740549238926848
+  },
+  {
+   "action": "emote_none",
+   "share of choices": 0.14486028522993905,
+   "chosen as recorded": 0.855877034358047
+  },
+  {
+   "action": "move_west",
+   "share of choices": 0.09972195507123265,
+   "chosen as recorded": 0.5573776643650555
+  },
+  {
+   "action": "move_east",
+   "share of choices": 0.09844212511647575,
+   "chosen as recorded": 0.580818064319927
+  },
+  {
+   "action": "harvest_attack",
+   "share of choices": 0.09314692223349039,
+   "chosen as recorded": 0.968502671648387
+  },
+  {
+   "action": "move_south",
+   "share of choices": 0.09235731954210528,
+   "chosen as recorded": 0.6026337115072934
+  },
+  {
+   "action": "move_north",
+   "share of choices": 0.09124214607275571,
+   "chosen as recorded": 0.6366581904683783
+  },
+  {
+   "action": "craft_build",
+   "share of choices": 0.06439191237281222,
+   "chosen as recorded": 0.916952403091765
+  },
+  {
+   "action": "consume",
+   "share of choices": 0.01859121407962638,
+   "chosen as recorded": 0.04589371980676329
+  },
+  {
+   "action": "vote",
+   "share of choices": 0.008259019620317113,
+   "chosen as recorded": 0.9995468962392388
+  },
+  {
+   "action": "deposit",
+   "share of choices": 0.0032182858511430527,
+   "chosen as recorded": 0.4046511627906977
+  },
+  {
+   "action": "equip",
+   "share of choices": 0.0011413688193007338,
+   "chosen as recorded": 0.0
+  },
+  {
+   "action": "take",
+   "share of choices": 0.0009168372482907534,
+   "chosen as recorded": 0.09795918367346938
+  }
+ ],
+ "experiment": "20261008-1217-bc-bots-compass",
+ "kind": "imitation",
+ "minutes": 19.1
+}

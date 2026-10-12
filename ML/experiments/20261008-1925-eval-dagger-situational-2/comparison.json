@@ -1,0 +1,69 @@
+{
+ "comparison": [
+  {
+   "": "this network",
+   "villages": 16,
+   "days lived": 18.766145833333333,
+   "alive at the end": 0.0,
+   "achievements": 6.0,
+   "buildings": 0.0,
+   "technologies": 0.0,
+   "things crafted": 6.375,
+   "things gathered": 988.6875,
+   "crops reaped": 0.0,
+   "villager-days": 88.13177083333333,
+   "reward per villager-tick": -0.01630625
+  },
+  {
+   "": "scripted bots",
+   "villages": 16,
+   "days lived": 26.940625,
+   "alive at the end": 5.125,
+   "achievements": 20.3125,
+   "buildings": 4.0625,
+   "technologies": 0.5625,
+   "things crafted": 144.75,
+   "things gathered": 865.9375,
+   "crops reaped": 3.625,
+   "villager-days": 159.86223958333332,
+   "reward per villager-tick": 0.00229375
+  }
+ ],
+ "achievements": {
+  "this network": {
+   "Everyone Has a Job": 1.0,
+   "Toolmakers": 1.0,
+   "Wolf Down": 1.0,
+   "First Night": 1.0,
+   "The Council Changed Its Mind": 1.0,
+   "One Season": 1.0
+  },
+  "scripted bots": {
+   "Everyone Has a Job": 1.0,
+   "Toolmakers": 1.0,
+   "Wolf Down": 1.0,
+   "First Night": 1.0,
+   "Somewhere to Put Things": 1.0,
+   "A Fire in the Village": 0.875,
+   "First Garden": 0.875,
+   "First Catch": 0.875,
+   "A Full Larder": 1.0,
+   "Fish Supper": 0.875,
+   "The Council Changed Its Mind": 1.0,
+   "Roast": 0.75,
+   "One Season": 1.0,
+   "A Place to Think": 0.875,
+   "Something to Study": 0.875,
+   "Seeds in the Ground": 0.6875,
+   "First Harvest": 0.5625,
+   "Carpentry": 0.5625,
+   "A Proper Village": 0.4375,
+   "Sawn Timber": 0.375,
+   "Planks": 0.375,
+   "Winter Survived": 0.875,
+   "A Full Year": 0.875,
+   "Nobody Lost to Winter": 0.8125,
+   "A Year Without a Death": 0.75
+  }
+ }
+}

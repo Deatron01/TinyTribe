@@ -1,0 +1,17 @@
+{
+ "model": "ML/experiments/20261011-2321-dagger-compass/model.pt",
+ "name": "eval-dagger-compass",
+ "villages": 16,
+ "seed": 1001,
+ "days": 28,
+ "greedy": false,
+ "random": false,
+ "note": "After eight rounds of correction with the new compass: a year on the same 16 maps (the bots played them afresh, with the new compass).",
+ "model_from": "20261011-2321-dagger-compass",
+ "device": "cuda",
+ "experiment": "20261011-2329-eval-dagger-compass",
+ "kind": "evaluation",
+ "started": "2026-10-11T23:29:00",
+ "command": "ML/evaluate.py --model ML/experiments/20261011-2321-dagger-compass/model.pt --name eval-dagger-compass --villages 16 --days 28 --note \"After eight rounds of correction with the new compass: a year on the same 16 maps (the bots played them afresh, with the new compass).\"",
+ "code": "f89a002 + uncommitted changes"
+}

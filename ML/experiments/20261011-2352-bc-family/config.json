@@ -1,0 +1,230 @@
+{
+ "dataset": "ML/data/datasets/bots-family",
+ "name": "bc-family",
+ "epochs": 12,
+ "length": 128,
+ "blocks": 12,
+ "burn_in": 16,
+ "hidden": 128,
+ "lr": 0.001,
+ "val": 0.17,
+ "return_weight": 0.0,
+ "gamma": 0.999,
+ "balance": 0.5,
+ "extra": "",
+ "raw": false,
+ "seed": 0,
+ "note": "The first network on the game with family life in it. 48 villages played by the bots for two years each (seeds 101 to 148): they greet each other, marry, put up a tent for a couple and sleep at home, and in about half of them a child is born. The compass shows the nearest usable thing by walking; the network's heads see the present beside its memory.",
+ "device": "cuda",
+ "parameters": 1065386,
+ "layout": {
+  "grid_size": 11,
+  "grid_channels": 5,
+  "channel_sizes": [
+   9,
+   7,
+   20,
+   28,
+   13
+  ],
+  "vector_length": 195,
+  "action_count": 21,
+  "arg_count": 68,
+  "fields": {
+   "needs": [
+    0,
+    6
+   ],
+   "core stats": [
+    6,
+    4
+   ],
+   "social stats": [
+    10,
+    4
+   ],
+   "inventory": [
+    14,
+    20
+   ],
+   "equipped tool": [
+    34,
+    2
+   ],
+   "clothing": [
+    36,
+    4
+   ],
+   "time of day": [
+    40,
+    2
+   ],
+   "season": [
+    42,
+    4
+   ],
+   "weather": [
+    46,
+    4
+   ],
+   "role": [
+    50,
+    1
+   ],
+   "age": [
+    51,
+    1
+   ],
+   "sickness flags": [
+    52,
+    8
+   ],
+   "skill levels": [
+    60,
+    7
+   ],
+   "traits": [
+    67,
+    12
+   ],
+   "ideology": [
+    79,
+    4
+   ],
+   "status flags": [
+    83,
+    4
+   ],
+   "home direction": [
+    87,
+    2
+   ],
+   "village direction": [
+    89,
+    2
+   ],
+   "faced progress": [
+    91,
+    1
+   ],
+   "faced agent": [
+    92,
+    5
+   ],
+   "village stock": [
+    97,
+    4
+   ],
+   "village state": [
+    101,
+    6
+   ],
+   "role counts": [
+    107,
+    12
+   ],
+   "vote context": [
+    119,
+    11
+   ],
+   "wealth": [
+    130,
+    2
+   ],
+   "vote subject role": [
+    132,
+    1
+   ],
+   "vote is review": [
+    133,
+    1
+   ],
+   "village works": [
+    134,
+    27
+   ],
+   "technologies known": [
+    161,
+    6
+   ],
+   "technology studied": [
+    167,
+    1
+   ],
+   "compass": [
+    168,
+    27
+   ]
+  },
+  "item_scale": 57,
+  "role_scale": 12
+ },
+ "train_villages": [
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  112,
+  113,
+  114,
+  115,
+  116,
+  117,
+  118,
+  119,
+  120,
+  121,
+  122,
+  123,
+  124,
+  125,
+  126,
+  127,
+  128,
+  129,
+  130,
+  131,
+  132,
+  133,
+  134,
+  135,
+  136,
+  137,
+  138,
+  139,
+  140
+ ],
+ "val_villages": [
+  141,
+  142,
+  143,
+  144,
+  145,
+  146,
+  147,
+  148
+ ],
+ "train_rows": 3000320,
+ "val_rows": 613030,
+ "workbook_sha256": "fb5310f6850939df6ce9dae795cc417b5f0b6b08b1f65996a5e2c2f308ab6c06",
+ "demonstrator": [
+  "Survival"
+ ],
+ "baselines": {
+  "most_common_action": 14,
+  "most_common_acc": 0.26447155930378613,
+  "blind_pick_acc": 0.06867246900851674
+ },
+ "experiment": "20261011-2352-bc-family",
+ "kind": "imitation",
+ "started": "2026-10-11T23:52:35",
+ "command": "ML/train_bc.py --dataset ML/data/datasets/bots-family --name bc-family --epochs 12 --balance 0.5 --note \"The first network on the game with family life in it. 48 villages played by the bots for two years each (seeds 101 to 148): they greet each other, marry, put up a tent for a couple and sleep at home, and in about half of them a child is born. The compass shows the nearest usable thing by walking; the network's heads see the present beside its memory.\"",
+ "code": "f89a002 + uncommitted changes"
+}

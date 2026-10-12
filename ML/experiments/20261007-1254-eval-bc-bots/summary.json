@@ -1,0 +1,18 @@
+{
+ "this_network_days_lived": 4.547916666666667,
+ "this_network_alive_at_the_end": 0.0,
+ "this_network_achievements": 3.875,
+ "scripted_bots_days_lived": 26.940625,
+ "scripted_bots_alive_at_the_end": 5.125,
+ "scripted_bots_achievements": 20.3125,
+ "blind_choice_days_lived": 2.9151041666666666,
+ "blind_choice_alive_at_the_end": 0.0,
+ "blind_choice_achievements": 2.8125,
+ "villages": 16,
+ "days": 28,
+ "model_from": "20261007-1251-bc-bots",
+ "villager_ticks_per_second": 14569,
+ "experiment": "20261007-1254-eval-bc-bots",
+ "kind": "evaluation",
+ "minutes": 0.4
+}

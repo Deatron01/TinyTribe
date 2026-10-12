@@ -1,0 +1,18 @@
+{
+ "this_network_days_lived": 17.265104166666667,
+ "this_network_alive_at_the_end": 0.0,
+ "this_network_achievements": 6.5,
+ "scripted_bots_days_lived": 26.940625,
+ "scripted_bots_alive_at_the_end": 5.125,
+ "scripted_bots_achievements": 20.3125,
+ "blind_choice_days_lived": 2.9151041666666666,
+ "blind_choice_alive_at_the_end": 0.0,
+ "blind_choice_achievements": 2.8125,
+ "villages": 16,
+ "days": 28,
+ "model_from": "20261008-1516-dagger-situational",
+ "villager_ticks_per_second": 11217,
+ "experiment": "20261008-1528-eval-dagger-situational",
+ "kind": "evaluation",
+ "minutes": 0.7
+}
